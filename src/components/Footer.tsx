@@ -1,0 +1,60 @@
+import { Link } from "react-router-dom";
+import { Twitter, Linkedin, Instagram, Github, ArrowUp } from "lucide-react";
+
+export function Footer() {
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  return (
+    <footer className="border-t border-border/50 py-16 px-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-10 mb-12">
+          <div>
+            <Link to="/" className="text-xl font-bold tracking-tight">
+              <span className="warm-text">JOBRA</span>
+            </Link>
+            <p className="text-sm text-muted-foreground mt-3 leading-relaxed">AI-powered career intelligence platform. Land your dream job faster.</p>
+            <div className="flex gap-3 mt-4">
+              {[Twitter, Linkedin, Instagram, Github].map((Icon, i) => (
+                <a key={i} href="#" className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary transition-colors">
+                  <Icon className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h4 className="text-sm font-semibold text-foreground mb-4">Product</h4>
+            <div className="space-y-2">
+              {["Resume Analysis", "Resume Builder", "Job Matching", "Interview Prep"].map((item) => (
+                <Link key={item} to={`/${item.toLowerCase().replace(/ /g, "-")}`} className="block text-sm text-muted-foreground hover:text-foreground transition-colors">{item}</Link>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h4 className="text-sm font-semibold text-foreground mb-4">Company</h4>
+            <div className="space-y-2">
+              {["About", "Careers", "Blog", "Press"].map((item) => (
+                <a key={item} href="#" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">{item}</a>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h4 className="text-sm font-semibold text-foreground mb-4">Legal</h4>
+            <div className="space-y-2">
+              {["Privacy", "Terms", "Cookies", "Security"].map((item) => (
+                <a key={item} href="#" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">{item}</a>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="flex items-center justify-between pt-8 border-t border-border/50">
+          <p className="text-xs text-muted-foreground">© 2026 JOBRA. All rights reserved.</p>
+          <button onClick={scrollToTop} className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary transition-colors">
+            <ArrowUp className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+export default Footer;
