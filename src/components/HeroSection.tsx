@@ -1,143 +1,146 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Upload, ArrowRight, FileText, CheckCircle2, X, Star, Shield } from "lucide-react";
+import { Upload, FileText, CheckCircle2, X, BarChart3, Users, Briefcase, Mic, Brain, TrendingUp } from "lucide-react";
 
-const JOB_TITLES = [
-  "Frontend Developer", "Data Scientist", "Product Manager", "UX Designer",
-  "Cloud Architect", "DevOps Engineer", "Machine Learning Engineer", "Full Stack Developer",
-];
+/* ── Fey-style Hero: Large app mockup + minimal tagline below ── */
 
-function TypingText() {
-  const [titleIdx, setTitleIdx] = useState(0);
-  const [displayed, setDisplayed] = useState("");
-  const [deleting, setDeleting] = useState(false);
-  const [pause, setPause] = useState(false);
-
-  useEffect(() => {
-    if (pause) { const t = setTimeout(() => { setDeleting(true); setPause(false); }, 1800); return () => clearTimeout(t); }
-    const target = JOB_TITLES[titleIdx];
-    if (!deleting) {
-      if (displayed.length < target.length) { const t = setTimeout(() => setDisplayed(target.slice(0, displayed.length + 1)), 60); return () => clearTimeout(t); }
-      else setPause(true);
-    } else {
-      if (displayed.length > 0) { const t = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 35); return () => clearTimeout(t); }
-      else { setDeleting(false); setTitleIdx((i) => (i + 1) % JOB_TITLES.length); }
-    }
-  }, [displayed, deleting, pause, titleIdx]);
-
-  return <span className="warm-text">{displayed}<span className="animate-pulse">|</span></span>;
-}
-
-function AnimatedCounter({ target, suffix = "", label }: { target: number; suffix?: string; label: string }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) {
-        let c = 0; const step = Math.ceil(target / 40);
-        const iv = setInterval(() => { c += step; if (c >= target) { setCount(target); clearInterval(iv); } else setCount(c); }, 40);
-        obs.disconnect();
-      }
-    }, { threshold: 0.3 });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [target]);
+function AppMockup() {
   return (
-    <div ref={ref} className="text-center">
-      <div className="text-2xl md:text-3xl font-bold text-foreground">
-        {count}{suffix}
+    <div className="relative mx-auto max-w-5xl px-4">
+      {/* Main dashboard mockup */}
+      <div className="relative rounded-2xl overflow-hidden border border-border/30 shadow-2xl shadow-black/50">
+        <div className="bg-card p-6 md:p-8">
+          {/* Top bar */}
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+                <Brain className="w-4 h-4 text-primary" />
+              </div>
+              <div>
+                <p className="text-sm font-medium text-foreground">Welcome back, Sarah</p>
+                <p className="text-xs text-muted-foreground">Your career dashboard</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-muted-foreground">Resume Score</span>
+              <span className="text-lg font-bold text-primary">87/100</span>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-5 gap-4">
+            {/* Left: Stats + Chart area */}
+            <div className="md:col-span-3 space-y-4">
+              {/* Stats row */}
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { label: "ATS Score", value: "87%", change: "+12%", icon: BarChart3 },
+                  { label: "Job Matches", value: "24", change: "New", icon: Briefcase },
+                  { label: "Interviews", value: "6", change: "This week", icon: Mic },
+                ].map((stat, i) => (
+                  <div key={i} className="bg-secondary/50 rounded-xl p-3">
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <stat.icon className="w-3 h-3 text-muted-foreground" />
+                      <span className="text-[10px] text-muted-foreground">{stat.label}</span>
+                    </div>
+                    <p className="text-lg font-bold text-foreground">{stat.value}</p>
+                    <span className="text-[10px] text-primary">{stat.change}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Chart placeholder */}
+              <div className="bg-secondary/30 rounded-xl p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs text-muted-foreground">Application Progress</span>
+                  <div className="flex gap-2">
+                    {["1W", "1M", "3M", "YTD"].map((t) => (
+                      <span key={t} className={`text-[10px] px-2 py-0.5 rounded ${t === "1M" ? "bg-primary/20 text-primary" : "text-muted-foreground"}`}>{t}</span>
+                    ))}
+                  </div>
+                </div>
+                {/* Fake chart line */}
+                <svg viewBox="0 0 400 80" className="w-full h-16">
+                  <path d="M0,60 C50,55 80,40 120,45 C160,50 200,20 250,25 C300,30 350,10 400,15" fill="none" stroke="hsl(25, 55%, 58%)" strokeWidth="2" />
+                  <path d="M0,60 C50,55 80,40 120,45 C160,50 200,20 250,25 C300,30 350,10 400,15 L400,80 L0,80Z" fill="url(#chartGrad)" opacity="0.1" />
+                  <defs>
+                    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="hsl(25, 55%, 58%)" />
+                      <stop offset="100%" stopColor="transparent" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+
+              {/* Sector performance */}
+              <div className="space-y-2">
+                {[
+                  { label: "Technology", score: "92%", bar: 92 },
+                  { label: "Product", score: "78%", bar: 78 },
+                  { label: "Design", score: "85%", bar: 85 },
+                  { label: "Marketing", score: "64%", bar: 64 },
+                ].map((s, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <span className="text-xs text-muted-foreground w-20">{s.label}</span>
+                    <span className={`text-xs font-medium ${s.bar >= 80 ? "text-primary" : "text-foreground"}`}>{s.score}</span>
+                    <div className="flex-1 h-1 bg-secondary rounded-full overflow-hidden">
+                      <div className="h-full bg-primary/40 rounded-full" style={{ width: `${s.bar}%` }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: AI Insights feed (like Fey's news feed) */}
+            <div className="md:col-span-2 space-y-3">
+              {/* AI Summary card */}
+              <div className="bg-secondary/50 rounded-xl p-4 border border-primary/10">
+                <div className="flex items-center gap-2 mb-2">
+                  <Brain className="w-4 h-4 text-primary" />
+                  <span className="text-xs font-medium text-foreground">Career Insight</span>
+                  <span className="text-[10px] text-muted-foreground ml-auto">Just now</span>
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Your resume's ATS compatibility improved by 12% this week. Adding quantified achievements in your latest role could push your score above 90%.
+                </p>
+              </div>
+
+              {/* Job match cards */}
+              {[
+                { company: "Google", role: "Sr. Product Designer", match: "94%" },
+                { company: "Stripe", role: "Frontend Engineer", match: "91%" },
+                { company: "Notion", role: "Design Engineer", match: "88%" },
+              ].map((job, i) => (
+                <div key={i} className="bg-secondary/30 rounded-xl p-3 flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center text-xs font-bold text-primary">
+                    {job.company[0]}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-medium text-foreground truncate">{job.role}</p>
+                    <p className="text-[10px] text-muted-foreground">{job.company} · Remote</p>
+                  </div>
+                  <span className="text-xs font-bold text-primary">{job.match}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="text-xs text-muted-foreground mt-1">{label}</div>
-    </div>
-  );
-}
-
-function ResumeDropZone({ visible }: { visible: boolean }) {
-  const navigate = useNavigate();
-  const [isDragging, setIsDragging] = useState(false);
-  const [file, setFile] = useState<File | null>(null);
-  const [progress, setProgress] = useState(0);
-  const [error, setError] = useState<string | null>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const handleFile = useCallback((f: File) => {
-    const ext = f.name.toLowerCase();
-    if (!ext.endsWith(".pdf") && !ext.endsWith(".docx") && !ext.endsWith(".doc")) { setError("Only PDF or DOCX files accepted"); return; }
-    if (f.size > 10 * 1024 * 1024) { setError("File must be under 10MB"); return; }
-    setError(null); setFile(f); setProgress(0);
-    let p = 0;
-    const iv = setInterval(() => {
-      p += Math.random() * 15 + 5;
-      if (p >= 100) { p = 100; clearInterval(iv); setTimeout(() => navigate("/resume-analysis"), 600); }
-      setProgress(p);
-    }, 200);
-  }, [navigate]);
-
-  if (!visible) return null;
-
-  return (
-    <div className="mt-8 animate-fade-up-delay-2">
-      <input ref={inputRef} type="file" accept=".pdf,.doc,.docx" className="hidden" onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])} />
-      {!file ? (
-        <div className="max-w-md mx-auto">
-          <div
-            className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all ${isDragging ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"}`}
-            onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
-            onDragLeave={() => setIsDragging(false)}
-            onDrop={(e) => { e.preventDefault(); setIsDragging(false); e.dataTransfer.files[0] && handleFile(e.dataTransfer.files[0]); }}
-            onClick={() => inputRef.current?.click()}
-          >
-            <Upload className="w-8 h-8 text-primary mx-auto mb-3" />
-            <p className="text-sm text-foreground font-medium">Drop your resume here</p>
-            <p className="text-xs text-muted-foreground mt-1">PDF, DOC, DOCX · Max 10MB</p>
-          </div>
-        </div>
-      ) : (
-        <div className="max-w-md mx-auto glass-card rounded-2xl p-6">
-          <div className="flex items-center gap-3 mb-3">
-            <FileText className="w-5 h-5 text-primary" />
-            <span className="text-sm text-foreground truncate flex-1">{file.name}</span>
-            {progress >= 100 ? <CheckCircle2 className="w-5 h-5 text-primary" /> : <button onClick={() => { setFile(null); setProgress(0); }}><X className="w-4 h-4 text-muted-foreground" /></button>}
-          </div>
-          <div className="w-full h-1.5 bg-secondary rounded-full overflow-hidden">
-            <div className="h-full bg-primary rounded-full transition-all duration-300" style={{ width: `${Math.min(progress, 100)}%` }} />
-          </div>
-          <p className="text-xs text-muted-foreground mt-2">{progress >= 100 ? "Redirecting to analysis…" : "Uploading…"}</p>
-        </div>
-      )}
-      {error && <div className="mt-3 text-center"><p className="text-xs text-destructive">{error}</p></div>}
     </div>
   );
 }
 
 export function HeroSection() {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true); }, { threshold: 0.1 });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
-
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center justify-center cosmic-bg grid-bg pt-16">
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center py-20">
-        <h1 className="section-heading animate-fade-up">
-          Your career, at the <br /> speed of <span className="warm-text">now</span>.
+    <section className="relative pt-24 pb-16 cosmic-bg">
+      {/* App Mockup - Fey style: large screenshot first */}
+      <AppMockup />
+
+      {/* Tagline below mockup - Fey style */}
+      <div className="text-center mt-16 px-6">
+        <p className="text-sm text-muted-foreground tracking-wide">JOBRA</p>
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground mt-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+          Land your dream career.
         </h1>
-        <p className="section-subheading mx-auto mt-6 animate-fade-up-delay-1">
-          AI-powered resume analysis, job matching, and career intelligence. Land your next role as a{" "}
-          <TypingText />
-        </p>
-        <div className="flex items-center justify-center gap-4 mt-8 animate-fade-up-delay-1">
-          <Link to="/resume-analysis" className="px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all flex items-center gap-2">
-            Analyze My Resume <ArrowRight className="w-4 h-4" />
-          </Link>
-          <a href="#features" className="px-6 py-3 rounded-full border border-border text-foreground font-semibold hover:bg-accent/50 transition-all">
-            See How It Works
-          </a>
-        </div>
-        <ResumeDropZone visible={visible} />
       </div>
     </section>
   );
