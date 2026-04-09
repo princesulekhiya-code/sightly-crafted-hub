@@ -16,6 +16,10 @@ const Dashboard = lazy(() => import("./pages/Dashboard.tsx"));
 const Profile = lazy(() => import("./pages/Profile.tsx"));
 const Settings = lazy(() => import("./pages/Settings.tsx"));
 const Mentors = lazy(() => import("./pages/Mentors.tsx"));
+const Pricing = lazy(() => import("./pages/Pricing.tsx"));
+const Updates = lazy(() => import("./pages/Updates.tsx"));
+const Students = lazy(() => import("./pages/Students.tsx"));
+const Features = lazy(() => import("./pages/Features.tsx"));
 
 const queryClient = new QueryClient();
 
@@ -39,6 +43,10 @@ const App = () => (
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/mentors" element={<Mentors />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/updates" element={<Updates />} />
+            <Route path="/students" element={<Students />} />
+            <Route path="/features" element={<Features />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
