@@ -1,16 +1,16 @@
-import { FaGoogle, FaMicrosoft, FaAmazon, FaMeta, FaApple, FaSpotify, FaUber, FaAirbnb } from "react-icons/fa6";
-import { SiNetflix, SiTesla } from "react-icons/si";
+import { SiGoogle, SiMeta, SiApple, SiNetflix, SiSpotify, SiUber, SiAirbnb, SiTesla } from "react-icons/si";
+import { FaMicrosoft, FaAmazon } from "react-icons/fa6";
 
 const BRANDS = [
-  { name: "Google", icon: FaGoogle, color: "#4285F4" },
+  { name: "Google", icon: SiGoogle, color: "#4285F4" },
   { name: "Microsoft", icon: FaMicrosoft, color: "#00A4EF" },
   { name: "Amazon", icon: FaAmazon, color: "#FF9900" },
-  { name: "Meta", icon: FaMeta, color: "#0082FB" },
-  { name: "Apple", icon: FaApple, color: "#A2AAAD" },
+  { name: "Meta", icon: SiMeta, color: "#0082FB" },
+  { name: "Apple", icon: SiApple, color: "#A2AAAD" },
   { name: "Netflix", icon: SiNetflix, color: "#E50914" },
-  { name: "Spotify", icon: FaSpotify, color: "#1DB954" },
-  { name: "Uber", icon: FaUber, color: "#FFFFFF" },
-  { name: "Airbnb", icon: FaAirbnb, color: "#FF5A5F" },
+  { name: "Spotify", icon: SiSpotify, color: "#1DB954" },
+  { name: "Uber", icon: SiUber, color: "#FFFFFF" },
+  { name: "Airbnb", icon: SiAirbnb, color: "#FF5A5F" },
   { name: "Tesla", icon: SiTesla, color: "#CC0000" },
 ];
 
@@ -25,9 +25,18 @@ export function TrustedBySection() {
           {[...BRANDS, ...BRANDS].map((brand, i) => {
             const Icon = brand.icon;
             return (
-              <div key={i} className="flex items-center gap-2 whitespace-nowrap select-none">
-                <Icon className="w-6 h-6" style={{ color: brand.color }} />
-                <span className="text-lg font-bold" style={{ color: brand.color }}>
+              <div
+                key={i}
+                className="flex items-center gap-3 whitespace-nowrap select-none group cursor-pointer transition-all duration-300 hover:scale-110"
+              >
+                <Icon
+                  className="w-7 h-7 transition-all duration-300 group-hover:drop-shadow-[0_0_8px_var(--glow)]"
+                  style={{ color: brand.color, "--glow": brand.color } as React.CSSProperties}
+                />
+                <span
+                  className="text-lg font-bold transition-all duration-300 group-hover:drop-shadow-[0_0_8px_var(--glow)]"
+                  style={{ color: brand.color, "--glow": brand.color } as React.CSSProperties}
+                >
                   {brand.name}
                 </span>
               </div>
