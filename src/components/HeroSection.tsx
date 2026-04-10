@@ -130,10 +130,10 @@ export function HeroSection() {
           <TypingText />
         </p>
         <div className="flex items-center gap-4 mt-8 md:mt-10 animate-fade-up-delay-1">
-          <Link to="/resume-analysis" className="px-8 py-4 rounded-full bg-primary text-primary-foreground text-base md:text-lg font-semibold hover:opacity-90 transition-all flex items-center gap-2">
-            Analyze My Resume <ArrowRight className="w-5 h-5" />
+          <Link to="/resume-analysis" className="px-6 py-3 rounded-full bg-primary text-primary-foreground text-sm md:text-base font-semibold hover:opacity-90 transition-all flex items-center gap-2">
+            Analyze My Resume <ArrowRight className="w-4 h-4" />
           </Link>
-          <a href="#features" className="px-8 py-4 rounded-full border border-border text-foreground text-base md:text-lg font-semibold hover:bg-accent/50 transition-all">
+          <a href="#features" className="px-6 py-3 rounded-full border border-border text-foreground text-sm md:text-base font-semibold hover:bg-accent/50 transition-all">
             See How It Works
           </a>
         </div>
