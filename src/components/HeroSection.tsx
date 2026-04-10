@@ -121,15 +121,15 @@ export function HeroSection() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center cosmic-bg grid-bg pt-16">
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center py-20">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 text-left py-20">
         <h1 className="section-heading animate-fade-up">
           Your career, at the <br /> speed of <span className="warm-text">now</span>.
         </h1>
-        <p className="section-subheading mx-auto mt-6 animate-fade-up-delay-1">
+        <p className="section-subheading mt-6 animate-fade-up-delay-1">
           AI-powered resume analysis, job matching, and career intelligence. Land your next role as a{" "}
           <TypingText />
         </p>
-        <div className="flex items-center justify-center gap-4 mt-8 animate-fade-up-delay-1">
+        <div className="flex items-center gap-4 mt-8 animate-fade-up-delay-1">
           <Link to="/resume-analysis" className="px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all flex items-center gap-2">
             Analyze My Resume <ArrowRight className="w-4 h-4" />
           </Link>
