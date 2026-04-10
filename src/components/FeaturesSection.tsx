@@ -51,9 +51,9 @@ export function FeaturesSection() {
                         loading="lazy"
                         width={640}
                         height={512}
-                        className={`w-full h-full object-cover transition-all duration-700 ${isActive ? "opacity-40 scale-110" : "opacity-20 scale-100"}`}
+                        className={`w-full h-full object-cover transition-all duration-700 ${isActive ? "opacity-70 scale-110" : "opacity-50 scale-100"}`}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent" />
                     </div>
 
                     {/* Content */}
