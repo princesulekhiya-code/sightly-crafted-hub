@@ -1,4 +1,5 @@
-import { SiGoogle, SiMicrosoft, SiAmazon, SiMeta, SiApple, SiNetflix, SiSpotify, SiUber, SiAirbnb, SiTesla } from "react-icons/si";
+import { SiGoogle, SiMeta, SiApple, SiNetflix, SiSpotify, SiUber, SiAirbnb, SiTesla } from "react-icons/si";
+import { FaMicrosoft, FaAmazon } from "react-icons/fa6";
 
 const BRANDS = [
   { name: "Google", icon: SiGoogle, color: "#4285F4" },
