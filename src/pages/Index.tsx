@@ -1,8 +1,14 @@
 import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
-import { HighlightsSection } from "@/components/HighlightsSection";
-import { DockSection } from "@/components/DockSection";
-import { FeatureShowcase } from "@/components/FeatureShowcase";
+import { TrustedBySection } from "@/components/TrustedBySection";
+import { ScoreSection } from "@/components/ScoreSection";
+import { BeforeAfterSection } from "@/components/BeforeAfterSection";
+import { FeaturesSection } from "@/components/FeaturesSection";
+import { HowItWorksSection } from "@/components/HowItWorksSection";
+import { RoadmapSection } from "@/components/RoadmapSection";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { PricingSection } from "@/components/PricingSection";
+import { FAQSection } from "@/components/FAQSection";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
 
@@ -11,12 +17,15 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <HeroSection />
-      <HighlightsSection />
-      <div className="divider-gradient max-w-6xl mx-auto" />
-      <DockSection />
-      <div className="divider-gradient max-w-6xl mx-auto" />
-      <FeatureShowcase />
-      <div className="divider-gradient max-w-6xl mx-auto" />
+      <TrustedBySection />
+      <ScoreSection />
+      <BeforeAfterSection />
+      <FeaturesSection />
+      <HowItWorksSection />
+      <RoadmapSection />
+      <TestimonialsSection />
+      <PricingSection />
+      <FAQSection />
       <CTASection />
       <Footer />
     </div>
