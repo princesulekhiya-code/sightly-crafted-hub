@@ -129,7 +129,7 @@ export function HeroSection() {
           AI-powered resume analysis, job matching, and career intelligence. Land your next role as a{" "}
           <TypingText />
         </p>
-        <div className="flex items-center justify-center gap-4 mt-8 animate-fade-up-delay-1">
+        <div className="flex items-center gap-4 mt-8 animate-fade-up-delay-1">
           <Link to="/resume-analysis" className="px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all flex items-center gap-2">
             Analyze My Resume <ArrowRight className="w-4 h-4" />
           </Link>
