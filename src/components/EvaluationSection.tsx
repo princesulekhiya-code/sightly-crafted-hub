@@ -1,55 +1,47 @@
 import { useState } from "react";
 import { ScrollReveal } from "./ScrollReveal";
-
-import evalSpelling from "@/assets/eval-spelling.jpg";
-import evalCustomization from "@/assets/eval-customization.jpg";
-import evalSummary from "@/assets/eval-summary.jpg";
-import evalWordChoice from "@/assets/eval-wordchoice.jpg";
-import evalFormatting from "@/assets/eval-formatting.jpg";
-import evalResults from "@/assets/eval-results.jpg";
-import evalLength from "@/assets/eval-length.jpg";
-import evalCompleteness from "@/assets/eval-completeness.jpg";
+import { CheckCircle, FileText, Type, PenTool, Layout, BarChart3, Ruler, ClipboardCheck } from "lucide-react";
 
 const evaluationItems = [
   {
     title: "Spelling & Grammar",
     description: "Ensure an error-free resume to impress recruiters. Our checker detects mistakes you might miss.",
-    image: evalSpelling,
+    icon: Type,
   },
   {
     title: "Customization",
     description: "Enter a job title to extract key skills, keywords, and certifications, ensuring your resume aligns with ATS and hiring manager expectations.",
-    image: evalCustomization,
+    icon: PenTool,
   },
   {
     title: "Summary Statement",
     description: "Highlight your top skills and qualifications in a brief snapshot to capture the hiring manager's attention.",
-    image: evalSummary,
+    icon: FileText,
   },
   {
     title: "Word Choice",
     description: "Use strong action verbs and avoid personal pronouns, fillers, and informal language for a professional tone.",
-    image: evalWordChoice,
+    icon: CheckCircle,
   },
   {
     title: "Formatting",
     description: "Ensure a polished, visually appealing layout that is ATS-friendly and recruiter-ready.",
-    image: evalFormatting,
+    icon: Layout,
   },
   {
     title: "Measurable Results",
     description: "Showcase quantifiable achievements to highlight your impact and stand out from the competition.",
-    image: evalResults,
+    icon: BarChart3,
   },
   {
     title: "Optimal Length",
     description: "Keep it concise—one page or ~1,100 characters for easy scanning by employers.",
-    image: evalLength,
+    icon: Ruler,
   },
   {
     title: "Completeness",
     description: "Include contact details, a summary, key skills, and work history for a well-rounded resume.",
-    image: evalCompleteness,
+    icon: ClipboardCheck,
   },
 ];
 
@@ -134,37 +126,28 @@ function EvalCard({
   onEnter: () => void;
   onLeave: () => void;
 }) {
+  const Icon = item.icon;
   return (
     <ScrollReveal delay={index * 60} direction="up">
       <div
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
-        className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 border group ${
+        className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 border group bg-card p-6 ${
           isActive
             ? "border-primary/50 scale-[1.02] shadow-lg shadow-primary/10"
             : "border-border/50 hover:border-primary/30"
         }`}
       >
-        {/* Image */}
-        <div className="relative h-40 overflow-hidden">
-          <img
-            src={item.image}
-            alt={item.title}
-            loading="lazy"
-            width={640}
-            height={512}
-            className={`w-full h-full object-cover transition-all duration-700 ${
-              isActive ? "scale-110 brightness-90" : "scale-100 brightness-75"
-            }`}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
+        {/* Icon */}
+        <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-colors duration-300 ${
+          isActive ? "bg-primary/20" : "bg-primary/10"
+        }`}>
+          <Icon className={`w-5 h-5 transition-colors duration-300 ${isActive ? "text-primary" : "text-primary/70"}`} />
         </div>
 
         {/* Content */}
-        <div className="relative bg-card p-5 -mt-4">
-          <h3 className="text-base font-semibold text-foreground mb-2">{item.title}</h3>
-          <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
-        </div>
+        <h3 className="text-base font-semibold text-foreground mb-2">{item.title}</h3>
+        <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
 
         {/* Hover glow */}
         <div
