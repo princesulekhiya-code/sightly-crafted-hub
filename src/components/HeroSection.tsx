@@ -120,7 +120,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center cosmic-bg grid-bg pt-16">
+    <section ref={ref} className="relative min-h-screen flex items-center pt-16">
       <div className="relative z-10 max-w-6xl w-full mx-auto px-6 lg:px-16 text-left py-20">
         <h1 className="section-heading animate-fade-up">
           Your career, at the <br /> speed of <span className="warm-text">now</span>.
