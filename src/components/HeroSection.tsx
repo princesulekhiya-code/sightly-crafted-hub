@@ -121,19 +121,19 @@ export function HeroSection() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center pt-16">
-      <div className="relative z-10 w-full px-8 sm:px-12 md:px-20 lg:px-28 xl:px-36 text-left py-24 md:py-32">
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tight text-foreground leading-[1.1] animate-fade-up" style={{ fontFamily: "'Playfair Display', serif" }}>
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-16 lg:px-24 text-left py-24">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.1] animate-fade-up" style={{ fontFamily: "'Playfair Display', serif" }}>
           Your career, at the <br /> speed of <span className="warm-text">now</span>.
         </h1>
-        <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground mt-8 md:mt-10 animate-fade-up-delay-1 max-w-2xl leading-relaxed">
+        <p className="text-base md:text-lg lg:text-xl text-muted-foreground mt-6 md:mt-8 animate-fade-up-delay-1 max-w-xl leading-relaxed">
           AI-powered resume analysis, job matching, and career intelligence. Land your next role as a{" "}
           <TypingText />
         </p>
-        <div className="flex items-center gap-4 mt-10 md:mt-12 animate-fade-up-delay-1">
-          <Link to="/resume-analysis" className="px-8 py-4 rounded-full bg-primary text-primary-foreground text-base md:text-lg font-semibold hover:opacity-90 transition-all flex items-center gap-2">
-            Analyze My Resume <ArrowRight className="w-5 h-5" />
+        <div className="flex items-center gap-4 mt-8 md:mt-10 animate-fade-up-delay-1">
+          <Link to="/resume-analysis" className="px-6 py-3 rounded-full bg-primary text-primary-foreground text-sm md:text-base font-semibold hover:opacity-90 transition-all flex items-center gap-2">
+            Analyze My Resume <ArrowRight className="w-4 h-4" />
           </Link>
-          <a href="#features" className="px-8 py-4 rounded-full border border-border text-foreground text-base md:text-lg font-semibold hover:bg-accent/50 transition-all">
+          <a href="#features" className="px-6 py-3 rounded-full border border-border text-foreground text-sm md:text-base font-semibold hover:bg-accent/50 transition-all">
             See How It Works
           </a>
         </div>
