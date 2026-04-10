@@ -130,10 +130,10 @@ export function HeroSection() {
               Resume Checker
             </span>
           </div>
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground leading-[1.05] animate-fade-up" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.08] animate-fade-up" style={{ fontFamily: "'Playfair Display', serif" }}>
             Your career, at the speed of <span className="warm-text">now</span>.
           </h1>
-          <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground mt-8 md:mt-10 animate-fade-up-delay-1 max-w-2xl leading-relaxed">
+          <p className="text-base md:text-lg lg:text-xl text-muted-foreground mt-6 md:mt-8 animate-fade-up-delay-1 max-w-2xl leading-relaxed">
             AI-powered resume analysis, job matching, and career intelligence. Land your next role as a{" "}
             <TypingText />
           </p>
