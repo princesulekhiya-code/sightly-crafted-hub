@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Upload, ArrowRight, FileText, CheckCircle2, X, Star, Shield } from "lucide-react";
+import heroVisual from "@/assets/hero-visual.png";
 
 const JOB_TITLES = [
   "Frontend Developer", "Data Scientist", "Product Manager", "UX Designer",
