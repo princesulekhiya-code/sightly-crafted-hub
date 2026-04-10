@@ -85,7 +85,7 @@ export function HowItWorksSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-background/70" />
                 {/* Accent glow */}
                 <div
-                  className="absolute -bottom-20 -right-20 w-60 h-60 rounded-full blur-3xl opacity-20 transition-colors duration-700"
+                  className="absolute -bottom-20 -right-20 w-60 h-60 rounded-full blur-3xl opacity-10 transition-colors duration-700"
                   style={{ background: step.accent }}
                 />
               </div>
