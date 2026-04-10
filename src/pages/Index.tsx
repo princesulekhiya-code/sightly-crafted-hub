@@ -4,6 +4,7 @@ import { TrustedBySection } from "@/components/TrustedBySection";
 import { ScoreSection } from "@/components/ScoreSection";
 import { BeforeAfterSection } from "@/components/BeforeAfterSection";
 import { FeaturesSection } from "@/components/FeaturesSection";
+import { EvaluationSection } from "@/components/EvaluationSection";
 import { HowItWorksSection } from "@/components/HowItWorksSection";
 import { RoadmapSection } from "@/components/RoadmapSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
@@ -22,6 +23,7 @@ const Index = () => {
       <ScoreSection />
       <BeforeAfterSection />
       <FeaturesSection />
+      <EvaluationSection />
       <HowItWorksSection />
       <RoadmapSection />
       <TestimonialsSection />
