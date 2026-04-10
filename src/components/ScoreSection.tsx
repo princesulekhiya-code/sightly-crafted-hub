@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Upload, CheckCircle, FileText, Shield, Clock, BarChart3, ArrowRight } from "lucide-react";
+import scoreBg from "@/assets/score-section-bg.jpg";
 import { ScrollReveal } from "./ScrollReveal";
 
 const STEPS = [
@@ -25,7 +26,12 @@ export function ScoreSection() {
   };
 
   return (
-    <section className="py-24 px-6">
+    <section className="py-24 px-6 relative overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img src={scoreBg} alt="" className="w-full h-full object-cover opacity-15" loading="lazy" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
+      </div>
       <ScrollReveal>
         <div className="max-w-3xl mx-auto text-center">
           {/* Label */}
