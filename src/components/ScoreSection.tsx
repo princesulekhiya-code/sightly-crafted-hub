@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Upload, CheckCircle, FileText, Shield, Clock, BarChart3, ArrowRight } from "lucide-react";
+import scoreBg from "@/assets/score-section-bg.jpg";
 import { ScrollReveal } from "./ScrollReveal";
 
 const STEPS = [
