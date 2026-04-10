@@ -122,23 +122,31 @@ export function HeroSection() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center pt-16">
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-16 lg:px-24 text-left py-24">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.1] animate-fade-up" style={{ fontFamily: "'Playfair Display', serif" }}>
-          Your career, at the <br /> speed of <span className="warm-text">now</span>.
-        </h1>
-        <p className="text-base md:text-lg lg:text-xl text-muted-foreground mt-6 md:mt-8 animate-fade-up-delay-1 max-w-xl leading-relaxed">
-          AI-powered resume analysis, job matching, and career intelligence. Land your next role as a{" "}
-          <TypingText />
-        </p>
-        <div className="flex items-center gap-4 mt-8 md:mt-10 animate-fade-up-delay-1">
-          <Link to="/resume-analysis" className="px-6 py-3 rounded-full bg-primary text-primary-foreground text-sm md:text-base font-semibold hover:opacity-90 transition-all flex items-center gap-2">
-            Analyze My Resume <ArrowRight className="w-4 h-4" />
-          </Link>
-          <a href="#features" className="px-6 py-3 rounded-full border border-border text-foreground text-sm md:text-base font-semibold hover:bg-accent/50 transition-all">
-            See How It Works
-          </a>
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-16 lg:px-24 py-24 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        {/* Left content */}
+        <div className="flex-1 text-left">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.1] animate-fade-up" style={{ fontFamily: "'Playfair Display', serif" }}>
+            Your career, at the <br /> speed of <span className="warm-text">now</span>.
+          </h1>
+          <p className="text-base md:text-lg lg:text-xl text-muted-foreground mt-6 md:mt-8 animate-fade-up-delay-1 max-w-xl leading-relaxed">
+            AI-powered resume analysis, job matching, and career intelligence. Land your next role as a{" "}
+            <TypingText />
+          </p>
+          <div className="flex items-center gap-4 mt-8 md:mt-10 animate-fade-up-delay-1">
+            <Link to="/resume-analysis" className="px-6 py-3 rounded-full bg-primary text-primary-foreground text-sm md:text-base font-semibold hover:opacity-90 transition-all flex items-center gap-2">
+              Analyze My Resume <ArrowRight className="w-4 h-4" />
+            </Link>
+            <a href="#features" className="px-6 py-3 rounded-full border border-border text-foreground text-sm md:text-base font-semibold hover:bg-accent/50 transition-all">
+              See How It Works
+            </a>
+          </div>
+          <ResumeDropZone visible={visible} />
         </div>
-        <ResumeDropZone visible={visible} />
+
+        {/* Right animation */}
+        <div className="flex-1 hidden lg:flex items-center justify-center animate-fade-up-delay-2">
+          <HeroResumeAnimation />
+        </div>
       </div>
     </section>
   );
