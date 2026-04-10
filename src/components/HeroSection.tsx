@@ -80,7 +80,7 @@ function ResumeDropZone({ visible }: { visible: boolean }) {
     <div className="mt-8 animate-fade-up-delay-2">
       <input ref={inputRef} type="file" accept=".pdf,.doc,.docx" className="hidden" onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])} />
       {!file ? (
-        <div className="max-w-xl">
+        <div className="max-w-2xl">
           <div
             className={`border-2 border-dashed rounded-2xl p-10 text-center cursor-pointer transition-all ${isDragging ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"}`}
             onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
