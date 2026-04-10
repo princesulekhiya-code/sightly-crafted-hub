@@ -140,8 +140,8 @@ export function HeroSection() {
         </div>
         <ResumeDropZone visible={visible} />
       </div>
+    </section>
   );
-}
 }
 
 export default HeroSection;
