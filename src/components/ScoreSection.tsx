@@ -26,7 +26,12 @@ export function ScoreSection() {
   };
 
   return (
-    <section className="py-24 px-6">
+    <section className="py-24 px-6 relative overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img src={scoreBg} alt="" className="w-full h-full object-cover opacity-15" loading="lazy" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
+      </div>
       <ScrollReveal>
         <div className="max-w-3xl mx-auto text-center">
           {/* Label */}
