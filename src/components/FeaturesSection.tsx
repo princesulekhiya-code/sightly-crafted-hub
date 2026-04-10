@@ -41,19 +41,20 @@ export function FeaturesSection() {
                     onClick={() => setActiveIndex(isActive ? null : index)}
                     onMouseEnter={() => setActiveIndex(index)}
                     onMouseLeave={() => setActiveIndex(null)}
-                    className={`relative glow-border-hover glass-card rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ${isActive ? "scale-[1.03]" : ""}`}
+                    className={`relative glow-border-hover glass-card rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 min-h-[240px] ${isActive ? "scale-[1.03] shadow-lg shadow-primary/10" : ""}`}
                   >
                     {/* Background image */}
-                    <div className="absolute inset-0">
+                    <div className="absolute inset-0 overflow-hidden">
                       <img
                         src={feature.bg}
                         alt=""
                         loading="lazy"
                         width={640}
                         height={512}
-                        className={`w-full h-full object-cover transition-all duration-700 ${isActive ? "opacity-70 scale-110" : "opacity-50 scale-100"}`}
+                        className={`w-full h-full object-cover transition-all duration-700 ${isActive ? "opacity-40 scale-110 brightness-125" : "opacity-20 scale-100 brightness-75"}`}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
+                      <div className={`absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent transition-opacity duration-500 ${isActive ? "opacity-100" : "opacity-0"}`} />
                     </div>
 
                     {/* Content */}
