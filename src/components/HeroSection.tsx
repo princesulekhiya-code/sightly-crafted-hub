@@ -125,7 +125,7 @@ export function HeroSection() {
         <h1 className="section-heading animate-fade-up">
           Your career, at the <br /> speed of <span className="warm-text">now</span>.
         </h1>
-        <p className="section-subheading mt-6 animate-fade-up-delay-1">
+        <p className="section-subheading mt-6 animate-fade-up-delay-1 max-w-xl">
           AI-powered resume analysis, job matching, and career intelligence. Land your next role as a{" "}
           <TypingText />
         </p>
