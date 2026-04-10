@@ -122,9 +122,9 @@ export function HeroSection() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center pt-16">
-      <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 xl:px-28 py-20 md:py-28 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+      <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 xl:px-28 py-20 md:py-28 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
         {/* Left content */}
-        <div className="flex-1 text-left">
+        <div className="flex-1 text-left flex flex-col justify-center">
           <div className="animate-fade-up mb-6">
             <span className="inline-block text-sm font-bold tracking-[0.25em] uppercase px-5 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary">
               Resume Checker
