@@ -1,6 +1,14 @@
 const BRANDS = [
-  "Google", "Microsoft", "Amazon", "Meta", "Apple",
-  "Netflix", "Spotify", "Uber", "Airbnb", "Tesla",
+  { name: "Google", color: "#4285F4" },
+  { name: "Microsoft", color: "#00A4EF" },
+  { name: "Amazon", color: "#FF9900" },
+  { name: "Meta", color: "#0082FB" },
+  { name: "Apple", color: "#A2AAAD" },
+  { name: "Netflix", color: "#E50914" },
+  { name: "Spotify", color: "#1DB954" },
+  { name: "Uber", color: "#FFFFFF" },
+  { name: "Airbnb", color: "#FF5A5F" },
+  { name: "Tesla", color: "#CC0000" },
 ];
 
 export function TrustedBySection() {
@@ -10,7 +18,13 @@ export function TrustedBySection() {
       <div className="relative">
         <div className="flex gap-16 animate-[marquee-scroll_30s_linear_infinite] w-max">
           {[...BRANDS, ...BRANDS].map((brand, i) => (
-            <span key={i} className="text-lg font-semibold text-muted-foreground/40 whitespace-nowrap select-none">{brand}</span>
+            <span
+              key={i}
+              className="text-lg font-bold whitespace-nowrap select-none"
+              style={{ color: brand.color }}
+            >
+              {brand.name}
+            </span>
           ))}
         </div>
       </div>
