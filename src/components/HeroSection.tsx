@@ -138,14 +138,6 @@ export function HeroSection() {
             <TypingText />
           </p>
           <ResumeDropZone visible={visible} />
-          <div className="flex items-center gap-6 w-full max-w-2xl mt-8 animate-fade-up-delay-2">
-            <Link to="/resume-analysis" className="px-8 py-4 rounded-full bg-primary text-primary-foreground text-base md:text-lg font-bold hover:opacity-90 transition-all flex items-center gap-2">
-              Analyze My Resume <ArrowRight className="w-5 h-5" />
-            </Link>
-            <a href="#features" className="px-8 py-4 rounded-full border border-border text-foreground text-base md:text-lg font-bold hover:bg-accent/50 transition-all">
-              See How It Works
-            </a>
-          </div>
         </div>
 
         {/* Right animation */}
