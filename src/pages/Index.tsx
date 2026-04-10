@@ -20,7 +20,6 @@ const Index = () => {
       <TrustedBySection />
       <ScoreSection />
       <FeaturesSection />
-      <FeaturesSection />
       <EvaluationSection />
       <HowItWorksSection />
       <RoadmapSection />
