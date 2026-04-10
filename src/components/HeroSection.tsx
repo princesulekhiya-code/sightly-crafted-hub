@@ -80,7 +80,7 @@ function ResumeDropZone({ visible }: { visible: boolean }) {
     <div className="mt-8 animate-fade-up-delay-2">
       <input ref={inputRef} type="file" accept=".pdf,.doc,.docx" className="hidden" onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])} />
       {!file ? (
-        <div className="max-w-xl">
+        <div className="max-w-2xl">
           <div
             className={`border-2 border-dashed rounded-2xl p-10 text-center cursor-pointer transition-all ${isDragging ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"}`}
             onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
@@ -122,27 +122,27 @@ export function HeroSection() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center pt-16">
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-16 lg:px-24 py-24 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 xl:px-28 py-20 md:py-28 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         {/* Left content */}
         <div className="flex-1 text-left">
-          <div className="animate-fade-up mb-4">
-            <span className="inline-block text-xs font-semibold tracking-[0.25em] uppercase px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary">
+          <div className="animate-fade-up mb-6">
+            <span className="inline-block text-sm font-bold tracking-[0.25em] uppercase px-5 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary">
               Resume Checker
             </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.1] animate-fade-up" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground leading-[1.05] animate-fade-up" style={{ fontFamily: "'Playfair Display', serif" }}>
             Your career, at the speed of <span className="warm-text">now</span>.
           </h1>
-          <p className="text-base md:text-lg lg:text-xl text-muted-foreground mt-6 md:mt-8 animate-fade-up-delay-1 max-w-xl leading-relaxed">
+          <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground mt-8 md:mt-10 animate-fade-up-delay-1 max-w-2xl leading-relaxed">
             AI-powered resume analysis, job matching, and career intelligence. Land your next role as a{" "}
             <TypingText />
           </p>
           <ResumeDropZone visible={visible} />
-          <div className="flex items-center justify-between w-full max-w-xl mt-6 animate-fade-up-delay-2">
-            <Link to="/resume-analysis" className="px-6 py-3 rounded-full bg-primary text-primary-foreground text-sm md:text-base font-semibold hover:opacity-90 transition-all flex items-center gap-2">
-              Analyze My Resume <ArrowRight className="w-4 h-4" />
+          <div className="flex items-center gap-6 w-full max-w-2xl mt-8 animate-fade-up-delay-2">
+            <Link to="/resume-analysis" className="px-8 py-4 rounded-full bg-primary text-primary-foreground text-base md:text-lg font-bold hover:opacity-90 transition-all flex items-center gap-2">
+              Analyze My Resume <ArrowRight className="w-5 h-5" />
             </Link>
-            <a href="#features" className="px-6 py-3 rounded-full border border-border text-foreground text-sm md:text-base font-semibold hover:bg-accent/50 transition-all">
+            <a href="#features" className="px-8 py-4 rounded-full border border-border text-foreground text-base md:text-lg font-bold hover:bg-accent/50 transition-all">
               See How It Works
             </a>
           </div>
