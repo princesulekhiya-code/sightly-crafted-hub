@@ -2,13 +2,20 @@ import { Scan, TrendingUp, Briefcase, Target, FileText, BarChart3 } from "lucide
 import { useState } from "react";
 import { ScrollReveal } from "./ScrollReveal";
 
+import featureResumeScan from "@/assets/feature-resume-scan.jpg";
+import featureCareerTrajectory from "@/assets/feature-career-trajectory.jpg";
+import featureSmartMatching from "@/assets/feature-smart-matching.jpg";
+import featureJobCompatibility from "@/assets/feature-job-compatibility.jpg";
+import featureResumeBuilder from "@/assets/feature-resume-builder.jpg";
+import featureIndustryAnalytics from "@/assets/feature-industry-analytics.jpg";
+
 const features = [
-  { icon: Scan, title: "Resume Scan", description: "Upload your resume and our AI will parse through, identifying key qualifications and providing insights.", num: "01" },
-  { icon: TrendingUp, title: "Career Trajectory", description: "Get tailored career suggestions based on current skills and industry trends.", num: "02" },
-  { icon: Target, title: "Smart Matching", description: "Understand where your career could lead, get pathways curated from market data.", num: "03" },
-  { icon: Briefcase, title: "Job Compatibility", description: "Match your skills with job listings, see compatibility scores for various roles.", num: "04" },
-  { icon: FileText, title: "Resume Builder", description: "Build a compelling resume. Let our AI help you craft impactful professional documents.", num: "05" },
-  { icon: BarChart3, title: "Industry Analytics", description: "Stay informed about industry trends, explore which sectors are hiring and growing.", num: "06" },
+  { icon: Scan, title: "Resume Scan", description: "Upload your resume and our AI will parse through, identifying key qualifications and providing insights.", num: "01", bg: featureResumeScan },
+  { icon: TrendingUp, title: "Career Trajectory", description: "Get tailored career suggestions based on current skills and industry trends.", num: "02", bg: featureCareerTrajectory },
+  { icon: Target, title: "Smart Matching", description: "Understand where your career could lead, get pathways curated from market data.", num: "03", bg: featureSmartMatching },
+  { icon: Briefcase, title: "Job Compatibility", description: "Match your skills with job listings, see compatibility scores for various roles.", num: "04", bg: featureJobCompatibility },
+  { icon: FileText, title: "Resume Builder", description: "Build a compelling resume. Let our AI help you craft impactful professional documents.", num: "05", bg: featureResumeBuilder },
+  { icon: BarChart3, title: "Industry Analytics", description: "Stay informed about industry trends, explore which sectors are hiring and growing.", num: "06", bg: featureIndustryAnalytics },
 ];
 
 export function FeaturesSection() {
@@ -29,22 +36,39 @@ export function FeaturesSection() {
               const isActive = activeIndex === index;
               const Icon = feature.icon;
               return (
-                <div key={index} className="relative">
+                <ScrollReveal key={index} delay={index * 80} direction="up">
                   <div
                     onClick={() => setActiveIndex(isActive ? null : index)}
                     onMouseEnter={() => setActiveIndex(index)}
-                    className={`glow-border-hover glass-card rounded-2xl p-6 cursor-pointer transition-all duration-300 ${isActive ? "scale-[1.02]" : ""}`}
+                    onMouseLeave={() => setActiveIndex(null)}
+                    className={`relative glow-border-hover glass-card rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ${isActive ? "scale-[1.03]" : ""}`}
                   >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                        <Icon className="w-5 h-5 text-primary" />
-                      </div>
-                      <span className="text-xs text-muted-foreground font-mono">{feature.num}</span>
+                    {/* Background image */}
+                    <div className="absolute inset-0">
+                      <img
+                        src={feature.bg}
+                        alt=""
+                        loading="lazy"
+                        width={640}
+                        height={512}
+                        className={`w-full h-full object-cover transition-all duration-700 ${isActive ? "opacity-40 scale-110" : "opacity-20 scale-100"}`}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
                     </div>
-                    <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+
+                    {/* Content */}
+                    <div className="relative z-10 p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20">
+                          <Icon className="w-5 h-5 text-primary" />
+                        </div>
+                        <span className="text-xs text-muted-foreground font-mono">{feature.num}</span>
+                      </div>
+                      <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                    </div>
                   </div>
-                </div>
+                </ScrollReveal>
               );
             })}
           </div>
