@@ -80,9 +80,9 @@ function ResumeDropZone({ visible }: { visible: boolean }) {
     <div className="mt-8 animate-fade-up-delay-2">
       <input ref={inputRef} type="file" accept=".pdf,.doc,.docx" className="hidden" onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])} />
       {!file ? (
-        <div className="max-w-md">
+        <div className="max-w-xl">
           <div
-            className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all ${isDragging ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"}`}
+            className={`border-2 border-dashed rounded-2xl p-10 text-center cursor-pointer transition-all ${isDragging ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"}`}
             onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
             onDragLeave={() => setIsDragging(false)}
             onDrop={(e) => { e.preventDefault(); setIsDragging(false); e.dataTransfer.files[0] && handleFile(e.dataTransfer.files[0]); }}
@@ -126,13 +126,14 @@ export function HeroSection() {
         {/* Left content */}
         <div className="flex-1 text-left">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.1] animate-fade-up" style={{ fontFamily: "'Playfair Display', serif" }}>
-            Your career, at the <br /> speed of <span className="warm-text">now</span>.
+            Your career, at the speed of <span className="warm-text">now</span>.
           </h1>
           <p className="text-base md:text-lg lg:text-xl text-muted-foreground mt-6 md:mt-8 animate-fade-up-delay-1 max-w-xl leading-relaxed">
             AI-powered resume analysis, job matching, and career intelligence. Land your next role as a{" "}
             <TypingText />
           </p>
-          <div className="flex items-center gap-4 mt-8 md:mt-10 animate-fade-up-delay-1">
+          <ResumeDropZone visible={visible} />
+          <div className="flex items-center gap-4 mt-8 md:mt-10 animate-fade-up-delay-2">
             <Link to="/resume-analysis" className="px-6 py-3 rounded-full bg-primary text-primary-foreground text-sm md:text-base font-semibold hover:opacity-90 transition-all flex items-center gap-2">
               Analyze My Resume <ArrowRight className="w-4 h-4" />
             </Link>
@@ -140,7 +141,6 @@ export function HeroSection() {
               See How It Works
             </a>
           </div>
-          <ResumeDropZone visible={visible} />
         </div>
 
         {/* Right animation */}
