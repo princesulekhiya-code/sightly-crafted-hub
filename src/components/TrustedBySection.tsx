@@ -3,8 +3,8 @@ import { FaMicrosoft, FaAmazon } from "react-icons/fa6";
 
 const BRANDS = [
   { name: "Google", icon: SiGoogle, color: "#4285F4" },
-  { name: "Microsoft", icon: SiMicrosoft, color: "#00A4EF" },
-  { name: "Amazon", icon: SiAmazon, color: "#FF9900" },
+  { name: "Microsoft", icon: FaMicrosoft, color: "#00A4EF" },
+  { name: "Amazon", icon: FaAmazon, color: "#FF9900" },
   { name: "Meta", icon: SiMeta, color: "#0082FB" },
   { name: "Apple", icon: SiApple, color: "#A2AAAD" },
   { name: "Netflix", icon: SiNetflix, color: "#E50914" },
