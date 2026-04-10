@@ -121,11 +121,11 @@ export function HeroSection() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center cosmic-bg grid-bg pt-16">
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center py-20">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 text-left py-20">
         <h1 className="section-heading animate-fade-up">
           Your career, at the <br /> speed of <span className="warm-text">now</span>.
         </h1>
-        <p className="section-subheading mx-auto mt-6 animate-fade-up-delay-1">
+        <p className="section-subheading mt-6 animate-fade-up-delay-1">
           AI-powered resume analysis, job matching, and career intelligence. Land your next role as a{" "}
           <TypingText />
         </p>
