@@ -2,7 +2,7 @@ import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
 import { TrustedBySection } from "@/components/TrustedBySection";
 import { ScoreSection } from "@/components/ScoreSection";
-import { BeforeAfterSection } from "@/components/BeforeAfterSection";
+
 import { FeaturesSection } from "@/components/FeaturesSection";
 import { EvaluationSection } from "@/components/EvaluationSection";
 import { HowItWorksSection } from "@/components/HowItWorksSection";
@@ -21,7 +21,7 @@ const Index = () => {
       <HeroSection />
       <TrustedBySection />
       <ScoreSection />
-      <BeforeAfterSection />
+      <FeaturesSection />
       <FeaturesSection />
       <EvaluationSection />
       <HowItWorksSection />
