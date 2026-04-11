@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Upload, FileText, CheckCircle2, X } from "lucide-react";
 import { HeroResumeAnimation } from "./HeroResumeAnimation";
+import { ScrollReveal } from "./ScrollReveal";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const JOB_TITLES = [
