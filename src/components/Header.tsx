@@ -76,7 +76,7 @@ export function Header() {
       <div className="w-full px-8 md:px-16 lg:px-24 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="text-xl font-bold tracking-tight shrink-0">
-          <span className="warm-text">JOBRA</span>
+          <img src={jobraLogo} alt="JOBRA" className="h-6 w-auto" />
         </Link>
 
         {/* Center Nav - Services, Pricing, About with dropdowns */}
