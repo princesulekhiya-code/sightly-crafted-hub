@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { ScrollReveal } from "./ScrollReveal";
-import { ParallaxText } from "./ParallaxText";
+import { ScrollFade } from "./ScrollFade";
 
 const faqs = [
   { q: "What is an ATS and why does it matter?", a: "An Applicant Tracking System (ATS) is software used by most large companies to filter resumes before a human ever sees them. If your resume isn't ATS-friendly, it gets rejected automatically. JOBRA ensures your resume passes these filters." },
@@ -35,13 +35,13 @@ export function FAQSection() {
     <section className="py-24 px-6">
       <ScrollReveal>
         <div className="max-w-3xl mx-auto">
-          <ParallaxText speed={0.08}>
+          <ScrollFade>
             <div className="text-center mb-12">
               <span className="text-xs tracking-widest uppercase text-primary">✦ FAQ</span>
               <h2 className="section-heading mt-4">Frequently Asked Questions</h2>
               <p className="section-subheading mx-auto mt-4">Everything you need to know about JOBRA and how it works.</p>
             </div>
-          </ParallaxText>
+          </ScrollFade>
           <div className="glass-card rounded-2xl p-6 md:p-8">
             {faqs.map((faq, i) => (
               <FAQItem key={i} faq={faq} isOpen={openIdx === i} onToggle={() => setOpenIdx(openIdx === i ? null : i)} />

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Upload, CheckCircle, FileText, Shield, Clock, BarChart3, ArrowRight } from "lucide-react";
 import scoreBg from "@/assets/score-section-bg.jpg";
 import { ScrollReveal } from "./ScrollReveal";
+import { ScrollFade } from "./ScrollFade";
 
 const STEPS = [
   { num: 1, label: "Upload", desc: "Drop your resume" },
@@ -34,12 +35,13 @@ export function ScoreSection() {
       </div>
       <ScrollReveal>
         <div className="max-w-3xl mx-auto text-center">
-          {/* Label */}
-          <span className="text-xs tracking-widest uppercase text-primary">✦ AI-Powered Analysis</span>
-          <h2 className="section-heading mt-4">Get your resume score now!</h2>
-          <p className="section-subheading mx-auto mt-4">
-            Upload your resume and get instant ATS compatibility analysis with actionable improvement tips.
-          </p>
+          <ScrollFade>
+            <span className="text-xs tracking-widest uppercase text-primary">✦ AI-Powered Analysis</span>
+            <h2 className="section-heading mt-4">Get your resume score now!</h2>
+            <p className="section-subheading mx-auto mt-4">
+              Upload your resume and get instant ATS compatibility analysis with actionable improvement tips.
+            </p>
+          </ScrollFade>
 
           {/* Steps */}
           <div className="flex items-center justify-center gap-4 mt-10 mb-10">
