@@ -6,9 +6,7 @@ import evalCustomization from "@/assets/eval-customization.jpg";
 import evalSummary from "@/assets/eval-summary.jpg";
 import evalWordChoice from "@/assets/eval-wordchoice.jpg";
 import evalFormatting from "@/assets/eval-formatting.jpg";
-import evalResults from "@/assets/eval-results.jpg";
 import evalLength from "@/assets/eval-length.jpg";
-import evalCompleteness from "@/assets/eval-completeness.jpg";
 
 const evaluationItems = [
   {
@@ -37,19 +35,9 @@ const evaluationItems = [
     image: evalFormatting,
   },
   {
-    title: "Measurable Results",
-    description: "Showcase quantifiable achievements to highlight your impact and stand out from the competition.",
-    image: evalResults,
-  },
-  {
     title: "Optimal Length",
     description: "Keep it concise—one page or ~1,100 characters for easy scanning by employers.",
     image: evalLength,
-  },
-  {
-    title: "Completeness",
-    description: "Include contact details, a summary, key skills, and work history for a well-rounded resume.",
-    image: evalCompleteness,
   },
 ];
 
@@ -82,27 +70,10 @@ export function EvaluationSection() {
             ))}
           </div>
 
-          {/* Middle row: 3 cards */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
+          {/* Bottom row: 3 cards */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {evaluationItems.slice(3, 6).map((item, index) => {
               const i = index + 3;
-              return (
-                <EvalCard
-                  key={i}
-                  item={item}
-                  index={i}
-                  isActive={activeIndex === i}
-                  onEnter={() => setActiveIndex(i)}
-                  onLeave={() => setActiveIndex(null)}
-                />
-              );
-            })}
-          </div>
-
-          {/* Bottom row: 2 cards centered */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-5 max-w-2xl mx-auto">
-            {evaluationItems.slice(6, 8).map((item, index) => {
-              const i = index + 6;
               return (
                 <EvalCard
                   key={i}
