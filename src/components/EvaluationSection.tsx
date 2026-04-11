@@ -1,5 +1,6 @@
 import { ScrollReveal } from "./ScrollReveal";
 import { ScrollFade } from "./ScrollFade";
+import { Magnetic } from "./Magnetic";
 
 import evalSpelling from "@/assets/eval-spelling.jpg";
 import evalCustomization from "@/assets/eval-customization.jpg";
@@ -99,37 +100,34 @@ function BentoCard({
 
   return (
     <ScrollReveal delay={delay} direction="up">
-      <div
-        className={`group relative rounded-2xl overflow-hidden border border-border/40 hover:border-primary/30 transition-all duration-500 cursor-pointer h-full ${
-          isLarge ? "min-h-[380px]" : "min-h-[180px]"
-        }`}
-      >
-        {/* Background image */}
-        <img
-          src={item.image}
-          alt={item.title}
-          loading="lazy"
-          width={640}
-          height={512}
-          className="absolute inset-0 w-full h-full object-cover opacity-50 transition-all duration-700 group-hover:opacity-65 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-background/20" />
-
-        {/* Content */}
-        <div className="relative z-10 h-full flex flex-col justify-end p-6">
-          <h3 className={`font-semibold text-foreground mb-2 ${isLarge ? "text-xl" : "text-base"}`}>
-            {item.title}
-          </h3>
-          <p className={`text-muted-foreground leading-relaxed ${isLarge ? "text-sm max-w-md" : "text-xs"}`}>
-            {item.description}
-          </p>
+      <Magnetic strength={4} scale={1.05} glow>
+        <div
+          className={`group relative rounded-2xl overflow-hidden border border-border/40 hover:border-primary/30 transition-all duration-500 cursor-pointer h-full ${
+            isLarge ? "min-h-[380px]" : "min-h-[180px]"
+          }`}
+        >
+          <img
+            src={item.image}
+            alt={item.title}
+            loading="lazy"
+            width={640}
+            height={512}
+            className="absolute inset-0 w-full h-full object-cover opacity-50 transition-all duration-700 group-hover:opacity-65 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-background/20" />
+          <div className="relative z-10 h-full flex flex-col justify-end p-6">
+            <h3 className={`font-semibold text-foreground mb-2 ${isLarge ? "text-xl" : "text-base"}`}>
+              {item.title}
+            </h3>
+            <p className={`text-muted-foreground leading-relaxed ${isLarge ? "text-sm max-w-md" : "text-xs"}`}>
+              {item.description}
+            </p>
+          </div>
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
+            style={{ background: "radial-gradient(ellipse at bottom, hsl(var(--primary) / 0.06) 0%, transparent 70%)" }}
+          />
         </div>
-
-        {/* Hover glow */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-          style={{ background: "radial-gradient(ellipse at bottom, hsl(var(--primary) / 0.06) 0%, transparent 70%)" }}
-        />
-      </div>
+      </Magnetic>
     </ScrollReveal>
   );
 }
