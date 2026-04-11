@@ -19,7 +19,7 @@ export function DemoVideoSection() {
 
   return (
     <section className="py-28 px-6 relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-primary/[0.03] blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] rounded-full bg-primary/[0.03] blur-[100px] pointer-events-none" />
 
       <ScrollReveal>
         <div className="max-w-5xl mx-auto">
@@ -33,24 +33,12 @@ export function DemoVideoSection() {
             </p>
           </div>
 
-          {/* Video container */}
-          <div className="relative rounded-2xl overflow-hidden border border-border/40 bg-card/30 group cursor-pointer" onClick={togglePlay}>
-            {/* Browser-style top bar */}
-            <div className="flex items-center gap-2 px-4 py-3 bg-secondary/30 border-b border-border/20">
-              <div className="flex gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-destructive/30" />
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/30" />
-                <div className="w-2.5 h-2.5 rounded-full bg-green-500/30" />
-              </div>
-              <div className="flex-1 flex justify-center">
-                <div className="px-4 py-1 rounded-md bg-secondary/50 text-[11px] text-muted-foreground/40 font-mono">
-                  jobra.ai
-                </div>
-              </div>
-            </div>
-
-            {/* Video */}
-            <div className="relative aspect-video">
+          {/* Video */}
+          <div
+            className="relative rounded-2xl overflow-hidden border border-border/30 cursor-pointer group"
+            onClick={togglePlay}
+          >
+            <div className="aspect-video">
               <video
                 ref={videoRef}
                 src={demoVideoAsset.url}
@@ -61,16 +49,16 @@ export function DemoVideoSection() {
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
               />
+            </div>
 
-              {/* Play/Pause overlay */}
-              <div className={`absolute inset-0 flex items-center justify-center bg-background/30 transition-opacity duration-500 ${isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}>
-                <div className="w-16 h-16 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-primary/15">
-                  {isPlaying ? (
-                    <Pause className="w-6 h-6 text-primary/80" />
-                  ) : (
-                    <Play className="w-6 h-6 text-primary/80 ml-1" />
-                  )}
-                </div>
+            {/* Play/Pause overlay */}
+            <div className={`absolute inset-0 flex items-center justify-center bg-background/20 transition-opacity duration-500 ${isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}>
+              <div className="w-16 h-16 rounded-full border border-primary/25 bg-background/40 backdrop-blur-sm flex items-center justify-center transition-transform duration-300 hover:scale-110">
+                {isPlaying ? (
+                  <Pause className="w-6 h-6 text-foreground/80" />
+                ) : (
+                  <Play className="w-6 h-6 text-foreground/80 ml-1" />
+                )}
               </div>
             </div>
           </div>
