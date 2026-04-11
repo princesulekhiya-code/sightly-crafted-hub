@@ -6,9 +6,7 @@ import evalCustomization from "@/assets/eval-customization.jpg";
 import evalSummary from "@/assets/eval-summary.jpg";
 import evalWordChoice from "@/assets/eval-wordchoice.jpg";
 import evalFormatting from "@/assets/eval-formatting.jpg";
-import evalResults from "@/assets/eval-results.jpg";
 import evalLength from "@/assets/eval-length.jpg";
-import evalCompleteness from "@/assets/eval-completeness.jpg";
 
 const evaluationItems = [
   {
