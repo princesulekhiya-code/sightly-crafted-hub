@@ -16,27 +16,29 @@ import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { FAQSection } from "@/components/FAQSection";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
+import { ScrollNavDots } from "@/components/ScrollNavDots";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <HeroSection />
+      <ScrollNavDots />
+      <div id="hero"><HeroSection /></div>
       <TrustedBySection />
-      <StatsSection />
-      <ScoreSection />
-      <DemoVideoSection />
-      <FeaturesSection />
-      <EvaluationSection />
-      <BeforeAfterResumeSection />
-      <HowItWorksSection />
-      <RoadmapSection />
-      <WhoIsItForSection />
+      <div id="stats"><StatsSection /></div>
+      <div id="score"><ScoreSection /></div>
+      <div id="demo"><DemoVideoSection /></div>
+      <div id="features"><FeaturesSection /></div>
+      <div id="evaluation"><EvaluationSection /></div>
+      <div id="before-after"><BeforeAfterResumeSection /></div>
+      <div id="how-it-works"><HowItWorksSection /></div>
+      <div id="roadmap"><RoadmapSection /></div>
+      <div id="who-is-it-for"><WhoIsItForSection /></div>
       <IntegrationPartnersSection />
-      <ComparisonSection />
-      <TestimonialsSection />
-      <FAQSection />
-      <CTASection />
+      <div id="comparison"><ComparisonSection /></div>
+      <div id="testimonials"><TestimonialsSection /></div>
+      <div id="faq"><FAQSection /></div>
+      <div id="cta"><CTASection /></div>
       <Footer />
     </div>
   );
