@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import heroBg from "@/assets/hero-bg.jpg";
+import analysisBg from "@/assets/analysis-bg.jpg";
 import {
   Upload, FileText, Brain, BarChart3, ShieldCheck, Star,
   Search, Building2, ClipboardList, Sparkles, Target, CheckCircle2, X, AlertCircle
@@ -88,8 +88,8 @@ export default function ResumeAnalysisPage() {
   return (
     <div className="min-h-screen bg-background relative">
       {/* Background image */}
-      <img src={heroBg} alt="" width={1920} height={1080} className="absolute top-0 left-0 w-full h-[700px] object-cover opacity-40 pointer-events-none" />
-      <div className="absolute top-0 left-0 w-full h-[700px] bg-gradient-to-b from-background/30 via-background/60 to-background pointer-events-none" />
+      <img src={analysisBg} alt="" width={1920} height={1080} className="absolute top-0 left-0 w-full h-[800px] object-cover opacity-50 pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-[800px] bg-gradient-to-b from-background/20 via-background/50 to-background pointer-events-none" />
 
       <Header />
 
