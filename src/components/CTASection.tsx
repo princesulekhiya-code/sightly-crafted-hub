@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { ScrollReveal } from "./ScrollReveal";
+import { ScrollFade } from "./ScrollFade";
 
 export function CTASection() {
   return (
     <section className="py-24 px-6">
       <ScrollReveal>
         <div className="max-w-4xl mx-auto text-center">
-          <span className="text-xs tracking-widest uppercase text-primary">✦ Start Free Today</span>
-          <h2 className="section-heading mt-4">Ready to Engineer Your Next Career Move?</h2>
-          <p className="section-subheading mx-auto mt-6">Stop guessing and start performing. Upload your resume today and let JOBRA's AI Intelligence handle the rest.</p>
+          <ScrollFade>
+            <span className="text-xs tracking-widest uppercase text-primary">✦ Start Free Today</span>
+            <h2 className="section-heading mt-4">Ready to Engineer Your Next Career Move?</h2>
+            <p className="section-subheading mx-auto mt-6">Stop guessing and start performing. Upload your resume today and let JOBRA's AI Intelligence handle the rest.</p>
+          </ScrollFade>
           <div className="flex items-center justify-center gap-4 mt-8">
             <Link to="/resume-analysis" className="px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all flex items-center gap-2">
               Analyze My Resume Now <ArrowRight className="w-4 h-4" />
