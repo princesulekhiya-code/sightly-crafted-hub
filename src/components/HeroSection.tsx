@@ -120,12 +120,6 @@ export function HeroSection() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-      {/* Ambient background effects */}
-      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-primary/[0.02] rounded-full blur-[100px] pointer-events-none" />
-
-      {/* Subtle horizontal line */}
-      <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/20 to-transparent pointer-events-none" />
 
       <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 xl:px-28 py-16 md:py-20 flex flex-col lg:flex-row items-start gap-10 lg:gap-14">
         {/* Left content */}
