@@ -51,17 +51,6 @@ export function ScrollNavDots() {
 
   return (
     <>
-      {/* Scroll progress bar at top */}
-      <div className="fixed top-16 left-0 right-0 z-40 h-[2px] bg-transparent">
-        <div
-          className="h-full transition-all duration-150"
-          style={{
-            width: `${progress}%`,
-            background: "linear-gradient(90deg, hsl(var(--warm-dim)), hsl(var(--primary)), hsl(var(--warm-light)))",
-          }}
-        />
-      </div>
-
       {/* Side navigation dots */}
       <nav
         className={`fixed right-5 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-end gap-3 transition-all duration-500 ${
