@@ -84,22 +84,6 @@ function ResumeDropZone({ visible }: { visible: boolean }) {
             </div>
           </div>
 
-          {/* Or button */}
-          <div className="flex items-center gap-4 mt-5">
-            <button
-              onClick={() => inputRef.current?.click()}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 hover:opacity-90"
-              style={{
-                background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--warm-dim)))",
-                color: "hsl(var(--primary-foreground))",
-              }}
-            >
-              <Sparkles className="w-4 h-4" />
-              Analyze Resume
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <span className="text-xs text-muted-foreground">Free · No signup required</span>
-          </div>
         </div>
       ) : (
         <div className="max-w-md rounded-2xl p-6 border border-border/50 bg-card/50">
