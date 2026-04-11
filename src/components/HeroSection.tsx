@@ -127,6 +127,8 @@ export function HeroSection() {
         alt=""
         width={1920}
         height={1080}
+        loading="eager"
+        fetchPriority="high"
         className="absolute inset-0 w-full h-full object-cover opacity-60"
       />
       <div className="absolute inset-0 bg-background/40" />

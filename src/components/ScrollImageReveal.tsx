@@ -28,12 +28,13 @@ export function ScrollImageReveal({ children, className = "" }: ScrollImageRevea
   return (
     <div ref={ref} className={`overflow-hidden ${className}`}>
       <div
-        className="transition-all duration-1000 ease-out"
         style={{
           opacity: visible ? 1 : 0,
           transform: visible
-            ? "translateY(0) scale(1)"
-            : "translateY(30px) scale(1.08)",
+            ? "translate3d(0, 0, 0) scale(1)"
+            : "translate3d(0, 30px, 0) scale(1.08)",
+          transition: "opacity 1s ease-out, transform 1s ease-out",
+          willChange: "opacity, transform",
         }}
       >
         {children}
