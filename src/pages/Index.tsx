@@ -9,6 +9,8 @@ import { EvaluationSection } from "@/components/EvaluationSection";
 import { BeforeAfterResumeSection } from "@/components/BeforeAfterResumeSection";
 import { HowItWorksSection } from "@/components/HowItWorksSection";
 import { RoadmapSection } from "@/components/RoadmapSection";
+import { WhoIsItForSection } from "@/components/WhoIsItForSection";
+import { IntegrationPartnersSection } from "@/components/IntegrationPartnersSection";
 import { ComparisonSection } from "@/components/ComparisonSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { FAQSection } from "@/components/FAQSection";
