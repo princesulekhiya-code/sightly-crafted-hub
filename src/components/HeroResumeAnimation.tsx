@@ -49,7 +49,7 @@ export function HeroResumeAnimation() {
 
       {/* Main card */}
       <div
-        className="relative rounded-2xl border border-border/40 overflow-hidden min-h-[460px]"
+        className="relative rounded-2xl border border-border/40 overflow-hidden min-h-[380px]"
         style={{ background: "linear-gradient(145deg, hsl(var(--card)) 0%, hsl(0 0% 5%) 100%)" }}
       >
         <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
