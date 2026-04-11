@@ -99,6 +99,15 @@
     background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
     height: 1px;
   }
+
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* Animated Grid Background */
