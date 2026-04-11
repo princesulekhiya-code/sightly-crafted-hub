@@ -167,26 +167,6 @@ export function HeroSection() {
 
           <ResumeDropZone visible={visible} />
 
-          {/* Trust signals */}
-          <div className="mt-10 flex items-center gap-6 animate-fade-up-delay-2">
-            <div className="flex items-center gap-1.5">
-              <div className="flex -space-x-1.5">
-                {[...Array(4)].map((_, i) => (
-                  <div key={i} className="w-6 h-6 rounded-full bg-secondary border-2 border-background flex items-center justify-center">
-                    <span className="text-[8px] text-muted-foreground">✦</span>
-                  </div>
-                ))}
-              </div>
-              <span className="text-xs text-muted-foreground ml-1">10k+ users</span>
-            </div>
-            <div className="w-px h-4 bg-border/30" />
-            <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <span key={i} className="text-primary text-[10px]">★</span>
-              ))}
-              <span className="text-xs text-muted-foreground ml-1">4.9/5</span>
-            </div>
-          </div>
         </div>
 
         {/* Right animation */}
