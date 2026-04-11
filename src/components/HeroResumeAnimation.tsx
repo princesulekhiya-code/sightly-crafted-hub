@@ -44,18 +44,8 @@ export function HeroResumeAnimation() {
 
   return (
     <div className="relative w-full max-w-[520px] min-h-[580px] mx-auto" key={loopKey}>
-      {/* Ambient glow */}
-      <div className="absolute -inset-8 bg-primary/[0.03] rounded-[32px] blur-3xl" />
-      <div className="absolute -inset-4 bg-primary/[0.05] rounded-3xl blur-xl" />
-
-      {/* Grid dots */}
-      <div
-        className="absolute -inset-12 opacity-[0.03]"
-        style={{
-          backgroundImage: "radial-gradient(hsl(var(--foreground)) 1px, transparent 1px)",
-          backgroundSize: "16px 16px",
-        }}
-      />
+      {/* Subtle ambient glow */}
+      <div className="absolute -inset-6 bg-primary/[0.02] rounded-[32px] blur-2xl" />
 
       {/* Main card */}
       <div
@@ -124,10 +114,7 @@ function SceneHeader({ scene }: { scene: Scene }) {
           </p>
         </div>
       </div>
-      <div className="flex items-center gap-1 bg-primary/10 rounded-full px-2 py-1">
-        <Zap className="w-3 h-3 text-primary" />
-        <span className="text-[9px] font-semibold text-primary uppercase tracking-wider">AI</span>
-      </div>
+      <span className="text-[9px] font-medium text-primary/60 uppercase tracking-widest">Jobra AI</span>
     </div>
   );
 }
@@ -321,21 +308,12 @@ function ProcessingScene() {
 
   return (
     <div className="px-5 py-8 flex flex-col items-center gap-6 animate-fade-up">
-      {/* AI Brain animation */}
+      {/* Minimal processing indicator */}
       <div className="relative">
-        <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20">
-          <Brain className="w-8 h-8 text-primary" />
+        <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/15">
+          <BarChart3 className="w-7 h-7 text-primary" />
         </div>
-        {/* Orbiting dots */}
-        <div className="absolute inset-0 animate-spin" style={{ animationDuration: "3s" }}>
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1 w-2 h-2 rounded-full bg-primary" />
-        </div>
-        <div className="absolute inset-0 animate-spin" style={{ animationDuration: "3s", animationDirection: "reverse", animationDelay: "0.5s" }}>
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1 w-1.5 h-1.5 rounded-full bg-primary/60" />
-        </div>
-        {/* Pulse rings */}
-        <div className="absolute inset-0 rounded-full border border-primary/20 animate-ping" style={{ animationDuration: "2s" }} />
-        <div className="absolute -inset-3 rounded-full border border-primary/10 animate-ping" style={{ animationDuration: "2.5s" }} />
+        <div className="absolute -inset-1 rounded-2xl border border-primary/10 animate-pulse" style={{ animationDuration: "2s" }} />
       </div>
 
       <div className="text-center">
