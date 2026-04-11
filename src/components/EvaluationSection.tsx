@@ -1,4 +1,5 @@
 import { ScrollReveal } from "./ScrollReveal";
+import { ParallaxText } from "./ParallaxText";
 
 import evalSpelling from "@/assets/eval-spelling.jpg";
 import evalCustomization from "@/assets/eval-customization.jpg";
@@ -45,13 +46,15 @@ export function EvaluationSection() {
     <section className="py-24 px-6">
       <ScrollReveal>
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-xs tracking-widest uppercase text-primary">✦ Comprehensive Analysis</span>
-            <h2 className="section-heading mt-4">What Our ATS Scanner Evaluates</h2>
-            <p className="section-subheading mx-auto mt-4">
-              Our resume grader analyzes your resume, checking key criteria and providing feedback to optimize it.
-            </p>
-          </div>
+          <ParallaxText speed={0.08}>
+            <div className="text-center mb-16">
+              <span className="text-xs tracking-widest uppercase text-primary">✦ Comprehensive Analysis</span>
+              <h2 className="section-heading mt-4">What Our ATS Scanner Evaluates</h2>
+              <p className="section-subheading mx-auto mt-4">
+                Our resume grader analyzes your resume, checking key criteria and providing feedback to optimize it.
+              </p>
+            </div>
+          </ParallaxText>
 
           {/* Bento Grid Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
