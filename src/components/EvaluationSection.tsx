@@ -37,19 +37,9 @@ const evaluationItems = [
     image: evalFormatting,
   },
   {
-    title: "Measurable Results",
-    description: "Showcase quantifiable achievements to highlight your impact and stand out from the competition.",
-    image: evalResults,
-  },
-  {
     title: "Optimal Length",
     description: "Keep it concise—one page or ~1,100 characters for easy scanning by employers.",
     image: evalLength,
-  },
-  {
-    title: "Completeness",
-    description: "Include contact details, a summary, key skills, and work history for a well-rounded resume.",
-    image: evalCompleteness,
   },
 ];
 
