@@ -1,3 +1,4 @@
+import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
 import { TrustedBySection } from "@/components/TrustedBySection";
@@ -19,6 +20,8 @@ import { Footer } from "@/components/Footer";
 import { ScrollNavDots } from "@/components/ScrollNavDots";
 
 const Index = () => {
+  useSmoothScroll();
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
