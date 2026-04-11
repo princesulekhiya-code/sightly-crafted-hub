@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import jobraLogo from "@/assets/jobra-logo.png";
 import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown, FileSearch, FileText, Mic, Briefcase, Zap, Crown, Building2, Users, Lightbulb, Award } from "lucide-react";
 
