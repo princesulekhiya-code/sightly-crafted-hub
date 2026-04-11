@@ -126,9 +126,7 @@ export function HeroSection() {
         {/* Left content */}
         <div className="flex-1 text-left flex flex-col justify-center">
           <div className="animate-fade-up mb-6">
-            <span className="inline-block text-sm font-bold tracking-[0.25em] uppercase px-5 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary">
-              Resume Checker
-            </span>
+            <span className="text-xs tracking-[0.3em] uppercase text-primary/70 font-medium">✦ Resume Checker</span>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.08] animate-fade-up" style={{ fontFamily: "'Playfair Display', serif" }}>
             Your career, at the speed of <span className="warm-text">now</span>.
