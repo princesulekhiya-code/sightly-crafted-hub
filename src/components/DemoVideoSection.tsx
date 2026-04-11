@@ -45,7 +45,6 @@ export function DemoVideoSection() {
                 AI Suggestions
               </span>
             </div>
-          </div>
         </div>
       </ScrollReveal>
     </section>
