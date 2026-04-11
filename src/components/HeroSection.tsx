@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { Upload, FileText, CheckCircle2, X, ArrowRight, Sparkles } from "lucide-react";
+import { Upload, FileText, CheckCircle2, X } from "lucide-react";
 import { HeroResumeAnimation } from "./HeroResumeAnimation";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const JOB_TITLES = [
   "Frontend Developer", "Data Scientist", "Product Manager", "UX Designer",
@@ -120,6 +121,15 @@ export function HeroSection() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-start pt-20 overflow-hidden">
+      {/* Background image */}
+      <img
+        src={heroBg}
+        alt=""
+        width={1920}
+        height={1080}
+        className="absolute inset-0 w-full h-full object-cover opacity-60"
+      />
+      <div className="absolute inset-0 bg-background/40" />
 
       <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 xl:px-28 pt-8 pb-16 flex flex-col lg:flex-row items-start gap-10 lg:gap-14">
         {/* Left content */}
