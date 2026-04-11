@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ScrollReveal } from "./ScrollReveal";
-import { X, Check, ArrowRight, Sparkles } from "lucide-react";
+import { X, Check, Sparkles } from "lucide-react";
+import beforeBg from "@/assets/before-resume-bg.jpg";
+import afterBg from "@/assets/after-resume-bg.jpg";
 
 const beforePoints = [
   { text: "Managed a team of developers", issue: "Vague, no metrics" },
@@ -23,8 +25,6 @@ export function BeforeAfterResumeSection() {
 
   return (
     <section className="py-28 px-6 relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/[0.02] blur-[100px] pointer-events-none" />
-
       <ScrollReveal>
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
@@ -38,91 +38,122 @@ export function BeforeAfterResumeSection() {
           </div>
 
           <div className="grid md:grid-cols-[1fr_auto_1fr] gap-6 items-stretch">
-            {/* Before */}
+            {/* Before Card */}
             <div
               onMouseEnter={() => setHoveredSide("before")}
               onMouseLeave={() => setHoveredSide(null)}
-              className={`rounded-2xl border p-6 md:p-8 transition-all duration-500 ${
+              className={`rounded-2xl border overflow-hidden relative transition-all duration-500 ${
                 hoveredSide === "before"
-                  ? "border-destructive/30 bg-destructive/[0.03]"
-                  : "border-border/50 bg-card/30"
+                  ? "border-destructive/30"
+                  : "border-border/40"
               }`}
             >
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-2 h-2 rounded-full bg-destructive/50" />
-                <span className="text-xs font-medium text-destructive/70 uppercase tracking-widest">Before</span>
+              {/* Background image */}
+              <div className="absolute inset-0">
+                <img
+                  src={beforeBg}
+                  alt=""
+                  loading="lazy"
+                  width={800}
+                  height={900}
+                  className={`w-full h-full object-cover transition-all duration-700 ${
+                    hoveredSide === "before" ? "scale-105 opacity-15" : "opacity-10"
+                  }`}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/95 to-background/80" />
               </div>
 
-              <div className="space-y-4">
-                {beforePoints.map((point, i) => (
-                  <div key={i} className="group">
-                    <div className="flex items-start gap-3">
+              <div className="relative z-10 p-6 md:p-8">
+                <div className="flex items-center gap-2 mb-8">
+                  <div className="w-2 h-2 rounded-full bg-destructive/60" />
+                  <span className="text-xs font-semibold text-destructive/70 uppercase tracking-[0.2em]">Before</span>
+                </div>
+
+                <div className="space-y-5">
+                  {beforePoints.map((point, i) => (
+                    <div key={i} className="flex items-start gap-3">
                       <X className="w-4 h-4 text-destructive/40 mt-0.5 shrink-0" />
                       <div>
-                        <p className="text-sm text-muted-foreground/70 line-through decoration-destructive/20">{point.text}</p>
-                        <span className="text-[10px] text-destructive/50 mt-1 block">{point.issue}</span>
+                        <p className="text-sm text-muted-foreground/60 line-through decoration-destructive/15">{point.text}</p>
+                        <span className="text-[10px] text-destructive/40 mt-1 block font-medium">{point.issue}</span>
                       </div>
                     </div>
+                  ))}
+                </div>
+
+                <div className="mt-8 pt-5 border-t border-border/20">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[11px] text-muted-foreground/40 uppercase tracking-widest">ATS Score</span>
+                    <span className="text-2xl font-bold text-destructive/50 tabular-nums">32%</span>
                   </div>
-                ))}
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-border/30">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-muted-foreground/50">ATS Score</span>
-                  <span className="text-lg font-bold text-destructive/60">32%</span>
-                </div>
-                <div className="w-full h-1 bg-secondary rounded-full mt-2 overflow-hidden">
-                  <div className="h-full bg-destructive/30 rounded-full" style={{ width: "32%" }} />
+                  <div className="w-full h-1 bg-secondary/50 rounded-full overflow-hidden">
+                    <div className="h-full bg-destructive/25 rounded-full transition-all duration-1000" style={{ width: "32%" }} />
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Center arrow */}
-            <div className="hidden md:flex flex-col items-center justify-center gap-2">
-              <Sparkles className="w-5 h-5 text-primary/40" />
-              <div className="w-px h-16 bg-gradient-to-b from-transparent via-primary/20 to-transparent" />
-              <ArrowRight className="w-5 h-5 text-primary/50" />
-              <div className="w-px h-16 bg-gradient-to-b from-transparent via-primary/20 to-transparent" />
-              <span className="text-[10px] text-primary/40 font-medium tracking-widest">AI</span>
+            {/* Center divider */}
+            <div className="hidden md:flex flex-col items-center justify-center gap-3 py-8">
+              <div className="w-px h-20 bg-gradient-to-b from-transparent via-border/30 to-transparent" />
+              <div className="w-10 h-10 rounded-full border border-primary/20 bg-primary/[0.05] flex items-center justify-center">
+                <Sparkles className="w-4 h-4 text-primary/50" />
+              </div>
+              <div className="text-[10px] text-primary/30 font-semibold tracking-[0.2em] uppercase">AI</div>
+              <div className="w-px h-20 bg-gradient-to-b from-transparent via-border/30 to-transparent" />
             </div>
 
-            {/* After */}
+            {/* After Card */}
             <div
               onMouseEnter={() => setHoveredSide("after")}
               onMouseLeave={() => setHoveredSide(null)}
-              className={`rounded-2xl border p-6 md:p-8 transition-all duration-500 ${
+              className={`rounded-2xl border overflow-hidden relative transition-all duration-500 ${
                 hoveredSide === "after"
-                  ? "border-primary/30 bg-primary/[0.03]"
-                  : "border-border/50 bg-card/30"
+                  ? "border-primary/30"
+                  : "border-border/40"
               }`}
             >
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-2 h-2 rounded-full bg-primary/50" />
-                <span className="text-xs font-medium text-primary/70 uppercase tracking-widest">After</span>
+              {/* Background image */}
+              <div className="absolute inset-0">
+                <img
+                  src={afterBg}
+                  alt=""
+                  loading="lazy"
+                  width={800}
+                  height={900}
+                  className={`w-full h-full object-cover transition-all duration-700 ${
+                    hoveredSide === "after" ? "scale-105 opacity-15" : "opacity-10"
+                  }`}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/95 to-background/80" />
               </div>
 
-              <div className="space-y-4">
-                {afterPoints.map((point, i) => (
-                  <div key={i} className="group">
-                    <div className="flex items-start gap-3">
+              <div className="relative z-10 p-6 md:p-8">
+                <div className="flex items-center gap-2 mb-8">
+                  <div className="w-2 h-2 rounded-full bg-primary/60" />
+                  <span className="text-xs font-semibold text-primary/70 uppercase tracking-[0.2em]">After</span>
+                </div>
+
+                <div className="space-y-5">
+                  {afterPoints.map((point, i) => (
+                    <div key={i} className="flex items-start gap-3">
                       <Check className="w-4 h-4 text-primary/50 mt-0.5 shrink-0" />
                       <div>
                         <p className="text-sm text-foreground/80">{point.text}</p>
-                        <span className="text-[10px] text-primary/40 mt-1 block">{point.improved}</span>
+                        <span className="text-[10px] text-primary/35 mt-1 block font-medium">{point.improved}</span>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-border/30">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-muted-foreground/50">ATS Score</span>
-                  <span className="text-lg font-bold text-primary/80">94%</span>
+                  ))}
                 </div>
-                <div className="w-full h-1 bg-secondary rounded-full mt-2 overflow-hidden">
-                  <div className="h-full bg-primary/40 rounded-full" style={{ width: "94%" }} />
+
+                <div className="mt-8 pt-5 border-t border-border/20">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[11px] text-muted-foreground/40 uppercase tracking-widest">ATS Score</span>
+                    <span className="text-2xl font-bold text-primary/70 tabular-nums">94%</span>
+                  </div>
+                  <div className="w-full h-1 bg-secondary/50 rounded-full overflow-hidden">
+                    <div className="h-full bg-primary/35 rounded-full transition-all duration-1000" style={{ width: "94%" }} />
+                  </div>
                 </div>
               </div>
             </div>
