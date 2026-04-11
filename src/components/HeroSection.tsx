@@ -190,7 +190,7 @@ export function HeroSection() {
         </div>
 
         {/* Right animation */}
-        <div className="flex-1 hidden lg:flex items-center justify-center animate-fade-up-delay-2">
+        <div className="flex-1 hidden lg:flex items-start justify-center pt-4 animate-fade-up-delay-2">
           <HeroResumeAnimation />
         </div>
       </div>
