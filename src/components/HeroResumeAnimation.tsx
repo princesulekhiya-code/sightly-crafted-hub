@@ -43,7 +43,7 @@ export function HeroResumeAnimation() {
   }, [loopKey]);
 
   return (
-    <div className="relative w-full max-w-[520px] min-h-[580px] mx-auto" key={loopKey}>
+    <div className="relative w-full max-w-[480px] min-h-[460px] mx-auto" key={loopKey}>
       {/* Subtle ambient glow */}
       <div className="absolute -inset-6 bg-primary/[0.02] rounded-[32px] blur-2xl" />
 
