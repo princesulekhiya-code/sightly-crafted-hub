@@ -143,7 +143,7 @@ export function HeroSection() {
       {/* Subtle horizontal line */}
       <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/20 to-transparent pointer-events-none" />
 
-      <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 xl:px-28 py-20 md:py-28 flex flex-col lg:flex-row items-start gap-12 lg:gap-16">
+      <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 xl:px-28 py-16 md:py-20 flex flex-col lg:flex-row items-start gap-10 lg:gap-14">
         {/* Left content */}
         <div className="flex-1 text-left flex flex-col justify-center">
           <div className="animate-fade-up mb-8">
