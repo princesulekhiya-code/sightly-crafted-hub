@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import {
-  FileText, CheckCircle2, Star, TrendingUp, Zap, Shield,
+  FileText, CheckCircle2, Star, TrendingUp, Shield,
   BarChart3, Sparkles, X, AlertTriangle, Upload, Briefcase,
-  Users, MessageSquare, ArrowRight, Brain
+  Users, MessageSquare, ArrowRight
 } from "lucide-react";
 import resumeLowAts from "@/assets/resume-low-ats.webp";
 import resumeHighAts from "@/assets/resume-sample.webp";
