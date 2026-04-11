@@ -31,6 +31,8 @@ const Index = () => {
       <BeforeAfterResumeSection />
       <HowItWorksSection />
       <RoadmapSection />
+      <WhoIsItForSection />
+      <IntegrationPartnersSection />
       <ComparisonSection />
       <TestimonialsSection />
       <FAQSection />
