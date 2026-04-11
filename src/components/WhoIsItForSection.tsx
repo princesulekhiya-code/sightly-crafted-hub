@@ -79,11 +79,11 @@ export function WhoIsItForSection() {
                       loading="lazy"
                       width={640}
                       height={512}
-                      className="w-full h-full object-cover opacity-30 transition-all duration-700 group-hover:opacity-40 group-hover:scale-110"
+                      className="w-full h-full object-cover opacity-60 transition-all duration-700 group-hover:opacity-75 group-hover:scale-110"
                     />
                   </div>
                   {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/80 to-background/40" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/70 to-background/20" />
 
                   {/* Content */}
                   <div className="relative z-10 p-7 flex flex-col justify-end h-full min-h-[240px]">
