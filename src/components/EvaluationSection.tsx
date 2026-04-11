@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ScrollReveal } from "./ScrollReveal";
 
 import evalSpelling from "@/assets/eval-spelling.jpg";
@@ -42,49 +41,41 @@ const evaluationItems = [
 ];
 
 export function EvaluationSection() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
   return (
     <section className="py-24 px-6">
       <ScrollReveal>
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-xs tracking-widest uppercase text-primary">✦ Comprehensive Analysis</span>
-            <h2 className="section-heading mt-4">What Our ATS Resume Scanner Evaluates</h2>
+            <h2 className="section-heading mt-4">What Our ATS Scanner Evaluates</h2>
             <p className="section-subheading mx-auto mt-4">
-              Our resume grader analyzes your existing or newly created resume, checking key criteria and providing feedback to optimize it for both ATS and recruiters.
+              Our resume grader analyzes your resume, checking key criteria and providing feedback to optimize it.
             </p>
           </div>
 
-          {/* Top row: 3 cards */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
-            {evaluationItems.slice(0, 3).map((item, index) => (
-              <EvalCard
-                key={index}
-                item={item}
-                index={index}
-                isActive={activeIndex === index}
-                onEnter={() => setActiveIndex(index)}
-                onLeave={() => setActiveIndex(null)}
-              />
-            ))}
-          </div>
+          {/* Bento Grid Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            {/* Row 1: 1 large + 2 stacked */}
+            <div className="lg:col-span-2 lg:row-span-2">
+              <BentoCard item={evaluationItems[0]} size="large" delay={0} />
+            </div>
+            <div>
+              <BentoCard item={evaluationItems[1]} size="small" delay={80} />
+            </div>
+            <div>
+              <BentoCard item={evaluationItems[2]} size="small" delay={160} />
+            </div>
 
-          {/* Bottom row: 3 cards */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {evaluationItems.slice(3, 6).map((item, index) => {
-              const i = index + 3;
-              return (
-                <EvalCard
-                  key={i}
-                  item={item}
-                  index={i}
-                  isActive={activeIndex === i}
-                  onEnter={() => setActiveIndex(i)}
-                  onLeave={() => setActiveIndex(null)}
-                />
-              );
-            })}
+            {/* Row 2: 2 stacked + 1 large */}
+            <div>
+              <BentoCard item={evaluationItems[3]} size="small" delay={240} />
+            </div>
+            <div>
+              <BentoCard item={evaluationItems[4]} size="small" delay={320} />
+            </div>
+            <div className="lg:col-span-1">
+              <BentoCard item={evaluationItems[5]} size="medium" delay={400} />
+            </div>
           </div>
         </div>
       </ScrollReveal>
@@ -92,59 +83,48 @@ export function EvaluationSection() {
   );
 }
 
-function EvalCard({
+function BentoCard({
   item,
-  index,
-  isActive,
-  onEnter,
-  onLeave,
+  size,
+  delay,
 }: {
   item: (typeof evaluationItems)[0];
-  index: number;
-  isActive: boolean;
-  onEnter: () => void;
-  onLeave: () => void;
+  size: "large" | "medium" | "small";
+  delay: number;
 }) {
+  const isLarge = size === "large";
+
   return (
-    <ScrollReveal delay={index * 60} direction="up">
+    <ScrollReveal delay={delay} direction="up">
       <div
-        onMouseEnter={onEnter}
-        onMouseLeave={onLeave}
-        className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 border group ${
-          isActive
-            ? "border-primary/50 scale-[1.02] shadow-lg shadow-primary/10"
-            : "border-border/50 hover:border-primary/30"
+        className={`group relative rounded-2xl overflow-hidden border border-border/40 hover:border-primary/30 transition-all duration-500 cursor-pointer h-full ${
+          isLarge ? "min-h-[380px]" : "min-h-[180px]"
         }`}
       >
-        {/* Image */}
-        <div className="relative h-40 overflow-hidden">
-          <img
-            src={item.image}
-            alt={item.title}
-            loading="lazy"
-            width={640}
-            height={512}
-            className={`w-full h-full object-cover transition-all duration-700 ${
-              isActive ? "scale-110 brightness-90" : "scale-100 brightness-75"
-            }`}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
-        </div>
+        {/* Background image */}
+        <img
+          src={item.image}
+          alt={item.title}
+          loading="lazy"
+          width={640}
+          height={512}
+          className="absolute inset-0 w-full h-full object-cover opacity-50 transition-all duration-700 group-hover:opacity-65 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-background/20" />
 
         {/* Content */}
-        <div className="relative bg-card p-5 -mt-4">
-          <h3 className="text-base font-semibold text-foreground mb-2">{item.title}</h3>
-          <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
+        <div className="relative z-10 h-full flex flex-col justify-end p-6">
+          <h3 className={`font-semibold text-foreground mb-2 ${isLarge ? "text-xl" : "text-base"}`}>
+            {item.title}
+          </h3>
+          <p className={`text-muted-foreground leading-relaxed ${isLarge ? "text-sm max-w-md" : "text-xs"}`}>
+            {item.description}
+          </p>
         </div>
 
         {/* Hover glow */}
-        <div
-          className={`absolute inset-0 pointer-events-none rounded-2xl transition-opacity duration-500 ${
-            isActive ? "opacity-100" : "opacity-0"
-          }`}
-          style={{
-            background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.05) 0%, transparent 70%)",
-          }}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
+          style={{ background: "radial-gradient(ellipse at bottom, hsl(var(--primary) / 0.06) 0%, transparent 70%)" }}
         />
       </div>
     </ScrollReveal>

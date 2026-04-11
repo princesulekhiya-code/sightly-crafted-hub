@@ -1,5 +1,6 @@
+import { useRef } from "react";
 import { ScrollReveal } from "./ScrollReveal";
-import { GraduationCap, RefreshCw, Briefcase, Users, Code, PenTool } from "lucide-react";
+import { GraduationCap, RefreshCw, Briefcase, Users, Code, PenTool, ChevronLeft, ChevronRight } from "lucide-react";
 
 import whoFreshGraduates from "@/assets/who-fresh-graduates.jpg";
 import whoCareerSwitchers from "@/assets/who-career-switchers.jpg";
@@ -48,11 +49,19 @@ const audiences = [
 ];
 
 export function WhoIsItForSection() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const amount = 340;
+    scrollRef.current.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
+  };
+
   return (
-    <section className="py-28 px-6">
+    <section className="py-28 px-0">
       <ScrollReveal>
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 px-6">
             <span className="text-[11px] tracking-[0.3em] uppercase text-primary/70 font-medium">
               ✦ Built For You
             </span>
@@ -67,34 +76,60 @@ export function WhoIsItForSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {audiences.map((item, i) => (
-              <ScrollReveal key={item.title} delay={i * 80}>
-                <div className="group relative rounded-2xl border border-border/40 overflow-hidden min-h-[240px] transition-all duration-500 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
-                  {/* Background image */}
-                  <div className="absolute inset-0 overflow-hidden">
-                    <img
-                      src={item.bg}
-                      alt=""
-                      loading="lazy"
-                      width={640}
-                      height={512}
-                      className="w-full h-full object-cover opacity-60 transition-all duration-700 group-hover:opacity-75 group-hover:scale-110"
-                    />
-                  </div>
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/70 to-background/20" />
+          {/* Navigation arrows */}
+          <div className="flex justify-end gap-2 px-6 mb-5">
+            <button
+              onClick={() => scroll("left")}
+              className="w-9 h-9 rounded-full border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              className="w-9 h-9 rounded-full border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
 
-                  {/* Content */}
-                  <div className="relative z-10 p-7 flex flex-col justify-end h-full min-h-[240px]">
-                    <div className="w-10 h-10 rounded-xl bg-primary/15 border border-primary/20 flex items-center justify-center mb-5 transition-colors duration-300 group-hover:bg-primary/25">
+          {/* Horizontal scroll */}
+          <div
+            ref={scrollRef}
+            className="flex gap-5 overflow-x-auto scrollbar-hide px-6 pb-4"
+            style={{ scrollSnapType: "x mandatory" }}
+          >
+            {audiences.map((item, i) => (
+              <div
+                key={item.title}
+                className="group relative flex-shrink-0 w-[300px] rounded-2xl overflow-hidden border border-border/40 hover:border-primary/30 transition-all duration-500 cursor-pointer"
+                style={{ scrollSnapAlign: "start" }}
+              >
+                {/* Background image */}
+                <div className="relative h-[200px] overflow-hidden">
+                  <img
+                    src={item.bg}
+                    alt=""
+                    loading="lazy"
+                    width={640}
+                    height={512}
+                    className="w-full h-full object-cover opacity-70 transition-all duration-700 group-hover:opacity-85 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+
+                  {/* Icon overlay */}
+                  <div className="absolute bottom-4 left-5">
+                    <div className="w-10 h-10 rounded-xl bg-primary/15 border border-primary/20 flex items-center justify-center backdrop-blur-sm">
                       <item.icon className="w-5 h-5 text-primary" />
                     </div>
-                    <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                   </div>
                 </div>
-              </ScrollReveal>
+
+                {/* Text content */}
+                <div className="p-5 bg-card/50">
+                  <h3 className="text-base font-semibold text-foreground mb-2">{item.title}</h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
