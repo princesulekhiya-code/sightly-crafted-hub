@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FileSearch, FileText, Briefcase, Send, Mic, CheckCircle2, ArrowRight, Clock } from "lucide-react";
 import { ScrollReveal } from "./ScrollReveal";
@@ -6,31 +6,31 @@ import { ScrollReveal } from "./ScrollReveal";
 const phases = [
   {
     num: "01", label: "Phase 1", title: "Resume Analysis", subtitle: "Instant ATS Score & Feedback",
-    icon: FileSearch, color: "#6352dc", glowColor: "99, 82, 220", status: "Live",
+    icon: FileSearch, status: "Live",
     features: ["Upload resume with or without Job Description", "Select target Job Role for tailored analysis", "Generate ATS score & improvement suggestions"],
     href: "/resume-analysis", cta: "Try Now",
   },
   {
     num: "02", label: "Phase 2", title: "Resume Correction", subtitle: "AI-Powered Resume Rewriting",
-    icon: FileText, color: "#0ea5e9", glowColor: "14, 165, 233", status: "Live",
+    icon: FileText, status: "Live",
     features: ["Improve grammar, structure & formatting", "Auto-suggest power words & better descriptions", "Export as polished PDF"],
     href: "/resume-builder", cta: "Build Resume",
   },
   {
     num: "03", label: "Phase 3", title: "Job Suggestions", subtitle: "Smart Job Matching Engine",
-    icon: Briefcase, color: "#f59e0b", glowColor: "245, 158, 11", status: "Live",
+    icon: Briefcase, status: "Live",
     features: ["Suggest jobs based on skills & experience", "Compatibility score for each job role", "Filter by location, salary & industry"],
     href: "/job-matches", cta: "Find Jobs",
   },
   {
     num: "04", label: "Phase 4", title: "Direct Job Apply", subtitle: "One-Click Apply & Auto-Fill",
-    icon: Send, color: "#10b981", glowColor: "16, 185, 129", status: "Coming Soon",
+    icon: Send, status: "Coming Soon",
     features: ["Allow one-click apply to jobs", "Auto-fill job applications from resume data", "Track application status in real-time"],
     href: "/job-matches", cta: "Explore",
   },
   {
     num: "05", label: "Phase 5", title: "Interview Prep", subtitle: "AI Interview Coach",
-    icon: Mic, color: "#ec4899", glowColor: "236, 72, 153", status: "Coming Soon",
+    icon: Mic, status: "Coming Soon",
     features: ["AI voice assistant for interview preparation", "Role-specific question generation", "Real-time scoring on answers & delivery"],
     href: "/interview", cta: "Practice",
   },
@@ -40,6 +40,7 @@ export function RoadmapSection() {
   const [activePhase, setActivePhase] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [progressWidth, setProgressWidth] = useState(0);
+  const autoplayRef = useRef<ReturnType<typeof setInterval>>();
 
   const phase = phases[activePhase];
   const Icon = phase.icon;
@@ -52,95 +53,190 @@ export function RoadmapSection() {
       setActivePhase(idx);
       setProgressWidth(0);
       setTimeout(() => setIsTransitioning(false), 50);
-    }, 250);
+    }, 300);
   }, [activePhase]);
 
+  // Progress bar animation
   useEffect(() => {
     setProgressWidth(0);
     const t = setTimeout(() => setProgressWidth(100), 100);
     return () => clearTimeout(t);
   }, [activePhase]);
 
+  // Autoplay
   useEffect(() => {
-    const interval = setInterval(() => {
+    autoplayRef.current = setInterval(() => {
       setIsTransitioning(true);
       setTimeout(() => {
         setActivePhase(prev => (prev + 1) % phases.length);
         setProgressWidth(0);
         setTimeout(() => setIsTransitioning(false), 50);
-      }, 250);
+      }, 300);
     }, 6000);
-    return () => clearInterval(interval);
+    return () => clearInterval(autoplayRef.current);
   }, []);
 
   return (
-    <section className="py-24 px-6">
+    <section className="py-28 px-6 relative overflow-hidden">
+      {/* Subtle ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/[0.03] blur-[120px] pointer-events-none" />
+
       <ScrollReveal>
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-xs tracking-widest uppercase text-primary">Product Roadmap</span>
-            <h2 className="section-heading mt-4">From resume to dream job</h2>
-            <p className="section-subheading mx-auto mt-4">5 powerful phases — from resume analysis to AI interview coaching.</p>
+          {/* Header */}
+          <div className="text-center mb-20">
+            <span className="text-[11px] tracking-[0.3em] uppercase text-primary/70 font-medium">Product Roadmap</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-5 tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
+              From resume to dream job
+            </h2>
+            <p className="text-muted-foreground mt-4 text-base max-w-lg mx-auto">5 powerful phases — from resume analysis to AI interview coaching.</p>
           </div>
 
           {/* Timeline stepper */}
-          <div className="hidden md:flex items-center justify-between mb-12 px-8">
+          <div className="hidden md:flex items-center justify-between mb-16 relative px-4">
+            {/* Connecting line */}
+            <div className="absolute top-6 left-[60px] right-[60px] h-px bg-border" />
+            <div
+              className="absolute top-6 left-[60px] h-px bg-primary/40 transition-all duration-700 ease-out"
+              style={{ width: `${(activePhase / (phases.length - 1)) * (100 - 10)}%` }}
+            />
+
             {phases.map((p, i) => {
               const isActive = i === activePhase;
+              const isPast = i < activePhase;
               return (
-                <button key={i} onClick={() => goToPhase(i)} className="relative z-10 flex flex-col items-center gap-2 group">
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${isActive ? "scale-110" : ""}`} style={{ background: isActive ? p.color : "rgba(255,255,255,0.05)", color: isActive ? "#fff" : "rgba(255,255,255,0.3)" }}>
+                <button
+                  key={i}
+                  onClick={() => goToPhase(i)}
+                  className="relative z-10 flex flex-col items-center gap-3 group transition-all duration-500"
+                >
+                  <div
+                    className={`w-12 h-12 rounded-full flex items-center justify-center text-xs font-semibold transition-all duration-500 border ${
+                      isActive
+                        ? "bg-primary/15 border-primary/40 text-primary scale-110 shadow-[0_0_20px_hsl(var(--primary)/0.15)]"
+                        : isPast
+                        ? "bg-primary/8 border-primary/20 text-primary/60"
+                        : "bg-secondary/50 border-border text-muted-foreground group-hover:border-primary/20"
+                    }`}
+                  >
                     {p.num}
                   </div>
-                  <span className={`text-xs transition-colors ${isActive ? "text-foreground" : "text-muted-foreground"}`}>{p.title}</span>
+                  <span className={`text-xs transition-all duration-300 ${
+                    isActive ? "text-foreground font-medium" : "text-muted-foreground"
+                  }`}>
+                    {p.title}
+                  </span>
                 </button>
               );
             })}
           </div>
 
           {/* Content card */}
-          <div className={`glass-card rounded-2xl p-8 md:p-10 transition-opacity duration-300 ${isTransitioning ? "opacity-0" : "opacity-100"}`}>
-            <div className="grid md:grid-cols-[1fr_280px] gap-8">
+          <div className={`rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm p-8 md:p-10 transition-all duration-500 ${isTransitioning ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"}`}>
+            <div className="grid md:grid-cols-[1fr_260px] gap-10">
               <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="text-xs text-muted-foreground">{phase.label}</span>
-                  <span className={`text-xs px-2 py-0.5 rounded-full flex items-center gap-1 ${isLive ? "bg-primary/10 text-primary" : "bg-secondary text-muted-foreground"}`}>
+                {/* Phase label & status */}
+                <div className="flex items-center gap-3 mb-5">
+                  <span className="text-xs text-muted-foreground font-medium tracking-wide">{phase.label}</span>
+                  <span className={`text-[11px] px-2.5 py-1 rounded-full flex items-center gap-1.5 font-medium ${
+                    isLive
+                      ? "bg-primary/10 text-primary/80 border border-primary/15"
+                      : "bg-secondary/80 text-muted-foreground border border-border/50"
+                  }`}>
                     {isLive ? <CheckCircle2 className="w-3 h-3" /> : <Clock className="w-3 h-3" />}
                     {phase.status}
                   </span>
                 </div>
-                <h3 className="text-2xl font-semibold text-foreground">{phase.title}</h3>
-                <p className="text-muted-foreground mt-1 mb-6">{phase.subtitle}</p>
-                <ul className="space-y-3">
+
+                {/* Title & subtitle */}
+                <h3 className="text-2xl md:text-3xl font-semibold text-foreground tracking-tight">{phase.title}</h3>
+                <p className="text-muted-foreground mt-2 mb-8 text-sm">{phase.subtitle}</p>
+
+                {/* Features */}
+                <ul className="space-y-4">
                   {phase.features.map((feat, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                      {feat}
+                    <li
+                      key={i}
+                      className="flex items-start gap-3 text-sm text-muted-foreground/80 transition-all duration-300"
+                      style={{ animationDelay: `${i * 100}ms` }}
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-primary/50 mt-0.5 shrink-0" />
+                      <span>{feat}</span>
                     </li>
                   ))}
                 </ul>
-                <Link to={phase.href} className="inline-flex items-center gap-2 mt-8 px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:opacity-90" style={{ background: phase.color, color: "#fff" }}>
+
+                {/* CTA */}
+                <Link
+                  to={phase.href}
+                  className="inline-flex items-center gap-2 mt-10 px-6 py-2.5 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20 hover:bg-primary/15 hover:border-primary/30 transition-all duration-300"
+                >
                   {phase.cta} <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
 
-              {/* Progress tracker */}
+              {/* Progress tracker sidebar */}
               <div className="hidden md:block">
-                <p className="text-xs text-muted-foreground mb-4">Platform Progress</p>
-                {phases.map((p, i) => (
-                  <button key={i} onClick={() => goToPhase(i)} className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl mb-1.5 transition-all duration-300 text-left text-sm ${i === activePhase ? "" : "hover:bg-accent/30"}`} style={i === activePhase ? { background: `rgba(${p.glowColor}, 0.06)`, border: `1px solid rgba(${p.glowColor}, 0.15)` } : { border: "1px solid transparent" }}>
-                    <span className={i === activePhase ? "text-foreground" : "text-muted-foreground"}>{p.title}</span>
-                    <span className="ml-auto text-xs text-muted-foreground">{p.status === "Live" ? "100%" : "Soon"}</span>
-                  </button>
+                <p className="text-[11px] text-muted-foreground/60 uppercase tracking-widest mb-5 font-medium">Platform Progress</p>
+                <div className="space-y-1.5">
+                  {phases.map((p, i) => {
+                    const isActive = i === activePhase;
+                    return (
+                      <button
+                        key={i}
+                        onClick={() => goToPhase(i)}
+                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm transition-all duration-300 ${
+                          isActive
+                            ? "bg-primary/[0.06] border border-primary/15"
+                            : "border border-transparent hover:bg-accent/20"
+                        }`}
+                      >
+                        <span className={`transition-colors duration-300 ${isActive ? "text-foreground font-medium" : "text-muted-foreground"}`}>
+                          {p.title}
+                        </span>
+                        <span className={`ml-auto text-[11px] ${isActive ? "text-primary/60" : "text-muted-foreground/50"}`}>
+                          {p.status === "Live" ? "100%" : "Soon"}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom progress bar */}
+            <div className="mt-8 pt-6 border-t border-border/30">
+              <div className="flex gap-1.5">
+                {phases.map((_, i) => (
+                  <div
+                    key={i}
+                    className="h-0.5 rounded-full flex-1 transition-all duration-700 ease-out"
+                    style={{
+                      background: i < activePhase
+                        ? "hsl(var(--primary) / 0.3)"
+                        : i === activePhase
+                        ? `linear-gradient(90deg, hsl(var(--primary) / 0.4), hsl(var(--primary) / 0.15))`
+                        : "hsl(var(--border) / 0.3)",
+                    }}
+                  />
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Bottom dots */}
-          <div className="flex justify-center gap-2 mt-8">
-            {phases.map((p, i) => (
-              <button key={i} onClick={() => goToPhase(i)} className="rounded-full transition-all duration-500" style={{ width: i === activePhase ? "32px" : "8px", height: "8px", background: i === activePhase ? `linear-gradient(90deg, ${p.color}, rgba(${p.glowColor}, 0.6))` : "rgba(255,255,255,0.08)" }} />
+          {/* Mobile dots */}
+          <div className="flex justify-center gap-2 mt-8 md:hidden">
+            {phases.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goToPhase(i)}
+                className="rounded-full transition-all duration-500"
+                style={{
+                  width: i === activePhase ? "24px" : "6px",
+                  height: "6px",
+                  background: i === activePhase ? "hsl(var(--primary) / 0.5)" : "hsl(var(--border))",
+                }}
+              />
             ))}
           </div>
         </div>
