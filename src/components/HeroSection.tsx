@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Upload, FileText, CheckCircle2, X } from "lucide-react";
 import { HeroResumeAnimation } from "./HeroResumeAnimation";
+import { ScrollReveal } from "./ScrollReveal";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const JOB_TITLES = [
@@ -134,24 +135,30 @@ export function HeroSection() {
       <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 xl:px-28 pt-8 pb-16 flex flex-col lg:flex-row items-start gap-10 lg:gap-14">
         {/* Left content */}
         <div className="flex-1 text-left flex flex-col justify-center">
-          <div className="animate-fade-up mb-8">
-            <span className="text-[10px] tracking-[0.35em] uppercase text-primary/50 font-medium">✦ Resume Checker</span>
-          </div>
+          <ScrollReveal direction="up" delay={0}>
+            <div className="mb-8">
+              <span className="text-[10px] tracking-[0.35em] uppercase text-primary/50 font-medium">✦ Resume Checker</span>
+            </div>
+          </ScrollReveal>
 
-          <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.05] animate-fade-up"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
-            Your career, at the
-            <br />
-            speed of <span className="warm-text">now</span>.
-          </h1>
+          <ScrollReveal direction="up" delay={150}>
+            <h1
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.05]"
+              style={{ fontFamily: "'Playfair Display', serif" }}
+            >
+              Your career, at the
+              <br />
+              speed of <span className="warm-text">now</span>.
+            </h1>
+          </ScrollReveal>
 
-          <p className="text-base md:text-lg text-muted-foreground/80 mt-7 animate-fade-up-delay-1 max-w-xl leading-relaxed">
-            AI-powered resume analysis, job matching, and career intelligence.
-            <br className="hidden md:block" />
-            Land your next role as a <TypingText />
-          </p>
+          <ScrollReveal direction="up" delay={300}>
+            <p className="text-base md:text-lg text-muted-foreground/80 mt-7 max-w-xl leading-relaxed">
+              AI-powered resume analysis, job matching, and career intelligence.
+              <br className="hidden md:block" />
+              Land your next role as a <TypingText />
+            </p>
+          </ScrollReveal>
 
           <ResumeDropZone visible={visible} />
 
