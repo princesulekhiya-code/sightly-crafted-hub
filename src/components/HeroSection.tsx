@@ -119,9 +119,9 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+    <section ref={ref} className="relative min-h-screen flex items-start pt-20 overflow-hidden">
 
-      <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 xl:px-28 py-16 md:py-20 flex flex-col lg:flex-row items-start gap-10 lg:gap-14">
+      <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 xl:px-28 pt-8 pb-16 flex flex-col lg:flex-row items-start gap-10 lg:gap-14">
         {/* Left content */}
         <div className="flex-1 text-left flex flex-col justify-center">
           <div className="animate-fade-up mb-8">
