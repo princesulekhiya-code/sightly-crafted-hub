@@ -2,6 +2,7 @@ import { Scan, TrendingUp, Briefcase, Target, FileText, BarChart3 } from "lucide
 import { useState } from "react";
 import { ScrollReveal } from "./ScrollReveal";
 import { ScrollFade } from "./ScrollFade";
+import { Magnetic } from "./Magnetic";
 
 import featureResumeScan from "@/assets/feature-resume-scan.jpg";
 import featureCareerTrajectory from "@/assets/feature-career-trajectory.jpg";
@@ -40,38 +41,37 @@ export function FeaturesSection() {
               const Icon = feature.icon;
               return (
                 <ScrollReveal key={index} delay={index * 80} direction="up">
-                  <div
-                    onClick={() => setActiveIndex(isActive ? null : index)}
-                    onMouseEnter={() => setActiveIndex(index)}
-                    onMouseLeave={() => setActiveIndex(null)}
-                    className={`relative glow-border-hover glass-card rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 min-h-[240px] ${isActive ? "scale-[1.03] shadow-lg shadow-primary/10" : ""}`}
-                  >
-                    {/* Background image */}
-                    <div className="absolute inset-0 overflow-hidden">
-                      <img
-                        src={feature.bg}
-                        alt=""
-                        loading="lazy"
-                        width={640}
-                        height={512}
-                        className={`w-full h-full object-cover transition-all duration-700 ${isActive ? "opacity-40 scale-110 brightness-125" : "opacity-20 scale-100 brightness-75"}`}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
-                      <div className={`absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent transition-opacity duration-500 ${isActive ? "opacity-100" : "opacity-0"}`} />
-                    </div>
-
-                    {/* Content */}
-                    <div className="relative z-10 p-6">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20">
-                          <Icon className="w-5 h-5 text-primary" />
-                        </div>
-                        <span className="text-xs text-muted-foreground font-mono">{feature.num}</span>
+                  <Magnetic strength={5} scale={1.05} glow>
+                    <div
+                      onClick={() => setActiveIndex(isActive ? null : index)}
+                      onMouseEnter={() => setActiveIndex(index)}
+                      onMouseLeave={() => setActiveIndex(null)}
+                      className={`relative glow-border-hover glass-card rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 min-h-[240px] ${isActive ? "shadow-lg shadow-primary/10" : ""}`}
+                    >
+                      <div className="absolute inset-0 overflow-hidden">
+                        <img
+                          src={feature.bg}
+                          alt=""
+                          loading="lazy"
+                          width={640}
+                          height={512}
+                          className={`w-full h-full object-cover transition-all duration-700 ${isActive ? "opacity-40 scale-110 brightness-125" : "opacity-20 scale-100 brightness-75"}`}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
+                        <div className={`absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent transition-opacity duration-500 ${isActive ? "opacity-100" : "opacity-0"}`} />
                       </div>
-                      <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                      <div className="relative z-10 p-6">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20">
+                            <Icon className="w-5 h-5 text-primary" />
+                          </div>
+                          <span className="text-xs text-muted-foreground font-mono">{feature.num}</span>
+                        </div>
+                        <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                      </div>
                     </div>
-                  </div>
+                  </Magnetic>
                 </ScrollReveal>
               );
             })}
