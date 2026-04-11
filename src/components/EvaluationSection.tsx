@@ -70,27 +70,10 @@ export function EvaluationSection() {
             ))}
           </div>
 
-          {/* Middle row: 3 cards */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
+          {/* Bottom row: 3 cards */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {evaluationItems.slice(3, 6).map((item, index) => {
               const i = index + 3;
-              return (
-                <EvalCard
-                  key={i}
-                  item={item}
-                  index={i}
-                  isActive={activeIndex === i}
-                  onEnter={() => setActiveIndex(i)}
-                  onLeave={() => setActiveIndex(null)}
-                />
-              );
-            })}
-          </div>
-
-          {/* Bottom row: 2 cards centered */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-5 max-w-2xl mx-auto">
-            {evaluationItems.slice(6, 8).map((item, index) => {
-              const i = index + 6;
               return (
                 <EvalCard
                   key={i}
