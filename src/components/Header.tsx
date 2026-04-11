@@ -44,7 +44,17 @@ function NavDropdown({ trigger, children }: { trigger: string; children: React.R
 
 function DropdownItem({ item }: { item: { label: string; href: string; desc: string; icon: React.ElementType; tag?: string } }) {
   const Icon = item.icon;
-  const isLink = !item.href.startsWith("#");
+  const isHash = item.href.startsWith("#");
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (isHash) {
+      e.preventDefault();
+      const id = item.href.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   const content = (
     <div className="flex items-start gap-3 p-3 rounded-lg hover:bg-accent/50 transition-colors cursor-pointer">
       <Icon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
@@ -57,7 +67,7 @@ function DropdownItem({ item }: { item: { label: string; href: string; desc: str
       </div>
     </div>
   );
-  return isLink ? <Link to={item.href}>{content}</Link> : <a href={item.href}>{content}</a>;
+  return isHash ? <a href={item.href} onClick={handleClick}>{content}</a> : <Link to={item.href}>{content}</Link>;
 }
 
 export function Header() {
