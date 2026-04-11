@@ -29,9 +29,9 @@ function NavDropdown({ trigger, children }: { trigger: string; children: React.R
 
   return (
     <div className="relative" onMouseEnter={enter} onMouseLeave={leave}>
-      <button className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+      <button className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors" aria-label={`Open ${trigger} menu`}>
         {trigger}
-        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${open ? "rotate-180" : ""}`} />
+        <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
       </button>
       {open && (
         <div className="absolute top-full left-0 mt-2 w-72 glass-card rounded-xl p-2 z-50">
@@ -107,6 +107,7 @@ export function Header() {
             <span className="text-sm text-muted-foreground px-5 py-2">AI-Powered Career Tools</span>
             <Link
               to="/login"
+              aria-label="Get Started with JOBRA"
               className="text-sm font-medium bg-foreground text-background rounded-full px-5 py-2 hover:opacity-90 transition-opacity"
             >
               Get Started
@@ -115,7 +116,7 @@ export function Header() {
         </div>
 
         {/* Mobile toggle */}
-        <button className="md:hidden text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
+        <button className="md:hidden text-foreground" onClick={() => setMobileOpen(!mobileOpen)} aria-label={mobileOpen ? "Close menu" : "Open menu"}>
           {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>

@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
 import { Twitter, Linkedin, Instagram, Github, ArrowUp } from "lucide-react";
 
+const SOCIAL_LINKS = [
+  { Icon: Twitter, label: "Twitter" },
+  { Icon: Linkedin, label: "LinkedIn" },
+  { Icon: Instagram, label: "Instagram" },
+  { Icon: Github, label: "GitHub" },
+];
+
 export function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -9,13 +16,13 @@ export function Footer() {
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           <div>
-            <Link to="/" className="text-xl font-bold tracking-tight">
+            <Link to="/" className="text-xl font-bold tracking-tight" aria-label="JOBRA Home">
               <span className="warm-text">JOBRA</span>
             </Link>
             <p className="text-sm text-muted-foreground mt-3 leading-relaxed">AI-powered career intelligence platform. Land your dream job faster.</p>
             <div className="flex gap-3 mt-4">
-              {[Twitter, Linkedin, Instagram, Github].map((Icon, i) => (
-                <a key={i} href="#" className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary transition-colors">
+              {SOCIAL_LINKS.map(({ Icon, label }) => (
+                <a key={label} href="#" aria-label={`Follow us on ${label}`} className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300">
                   <Icon className="w-4 h-4" />
                 </a>
               ))}
@@ -48,7 +55,7 @@ export function Footer() {
         </div>
         <div className="flex items-center justify-between pt-8 border-t border-border/50">
           <p className="text-xs text-muted-foreground">© 2026 JOBRA. All rights reserved.</p>
-          <button onClick={scrollToTop} className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary transition-colors">
+          <button onClick={scrollToTop} aria-label="Scroll to top" className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300">
             <ArrowUp className="w-4 h-4" />
           </button>
         </div>
