@@ -1,6 +1,7 @@
 import { Scan, TrendingUp, Briefcase, Target, FileText, BarChart3 } from "lucide-react";
 import { useState } from "react";
 import { ScrollReveal } from "./ScrollReveal";
+import { ParallaxText } from "./ParallaxText";
 
 import featureResumeScan from "@/assets/feature-resume-scan.jpg";
 import featureCareerTrajectory from "@/assets/feature-career-trajectory.jpg";
@@ -25,11 +26,13 @@ export function FeaturesSection() {
     <section id="features" className="py-24 px-6">
       <ScrollReveal>
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-xs tracking-widest uppercase text-primary">✦ Powerful Tools</span>
-            <h2 className="section-heading mt-4">Everything you need to land your dream job</h2>
-            <p className="section-subheading mx-auto mt-4">Six powerful AI tools working together to analyze, optimize, and position your career for success.</p>
-          </div>
+          <ParallaxText speed={0.08}>
+            <div className="text-center mb-16">
+              <span className="text-xs tracking-widest uppercase text-primary">✦ Powerful Tools</span>
+              <h2 className="section-heading mt-4">Everything you need to land your dream job</h2>
+              <p className="section-subheading mx-auto mt-4">Six powerful AI tools working together to analyze, optimize, and position your career for success.</p>
+            </div>
+          </ParallaxText>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, index) => {

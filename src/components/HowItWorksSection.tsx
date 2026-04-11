@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { ScrollReveal } from "./ScrollReveal";
+import { ParallaxText } from "./ParallaxText";
 
 import stepUpload from "@/assets/step-upload.jpg";
 import stepAtsScore from "@/assets/step-ats-score.jpg";
@@ -46,11 +47,13 @@ export function HowItWorksSection() {
     <section className="py-24 px-6">
       <ScrollReveal>
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-xs tracking-widest uppercase text-primary">✦ How It Works</span>
-            <h2 className="section-heading mt-4">Your complete career pipeline</h2>
-            <p className="section-subheading mx-auto mt-4">From resume upload to dream job — 7 steps, fully guided by AI.</p>
-          </div>
+          <ParallaxText speed={0.08}>
+            <div className="text-center mb-16">
+              <span className="text-xs tracking-widest uppercase text-primary">✦ How It Works</span>
+              <h2 className="section-heading mt-4">Your complete career pipeline</h2>
+              <p className="section-subheading mx-auto mt-4">From resume upload to dream job — 7 steps, fully guided by AI.</p>
+            </div>
+          </ParallaxText>
 
           <div className="grid lg:grid-cols-[280px_1fr] gap-8">
             {/* Steps sidebar */}

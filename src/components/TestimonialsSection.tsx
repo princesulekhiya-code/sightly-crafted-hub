@@ -1,6 +1,7 @@
 import { Star } from "lucide-react";
 import { useState } from "react";
 import { ScrollReveal } from "./ScrollReveal";
+import { ParallaxText } from "./ParallaxText";
 
 const testimonials = [
   { text: "JOBRA completely changed my job search. The ATS analysis showed exactly what recruiters were looking for. I landed my dream role within 2 weeks.", author: "Sarah Jackson", role: "Product Manager", company: "Google", rating: 5, scoreJump: "58% → 94%" },
@@ -47,11 +48,13 @@ export function TestimonialsSection() {
   return (
     <section id="testimonials" className="py-24 overflow-hidden">
       <ScrollReveal>
-        <div className="text-center mb-12 px-6">
-          <span className="text-xs tracking-widest uppercase text-primary">✦ Success Stories</span>
-          <h2 className="section-heading mt-4">Wall of Success</h2>
-          <p className="section-subheading mx-auto mt-4">Real professionals, real results. See how JOBRA transformed their careers.</p>
-        </div>
+        <ParallaxText speed={0.08}>
+          <div className="text-center mb-12 px-6">
+            <span className="text-xs tracking-widest uppercase text-primary">✦ Success Stories</span>
+            <h2 className="section-heading mt-4">Wall of Success</h2>
+            <p className="section-subheading mx-auto mt-4">Real professionals, real results. See how JOBRA transformed their careers.</p>
+          </div>
+        </ParallaxText>
         <div className="relative">
           <div className={`flex ${paused ? "" : "animate-[marquee-scroll_40s_linear_infinite]"} w-max`}>
             {doubledTestimonials.map((testimonial, index) => (
