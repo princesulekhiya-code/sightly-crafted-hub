@@ -72,16 +72,23 @@ function DropdownItem({ item }: { item: { label: string; href: string; desc: str
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", h);
+    const h = () => {
+      const y = window.scrollY;
+      setScrolled(y > 20);
+      setHidden(y > 100 && y > lastScrollY.current);
+      lastScrollY.current = y;
+    };
+    window.addEventListener("scroll", h, { passive: true });
     return () => window.removeEventListener("scroll", h);
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/90 backdrop-blur-xl border-b border-border/50 shadow-lg shadow-background/20" : "bg-background/60 backdrop-blur-md"}`}>
+    <header className={`fixed left-0 right-0 z-50 transition-all duration-500 ${hidden ? "-top-20" : "top-0"} ${scrolled ? "bg-background/90 backdrop-blur-xl border-b border-border/50 shadow-lg shadow-background/20" : "bg-background/60 backdrop-blur-md"}`}>
       <div className="w-full px-8 md:px-16 lg:px-24 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="text-xl font-bold tracking-tight shrink-0">
