@@ -59,8 +59,7 @@ export function HowItWorksSection() {
                 <button
                   key={i}
                   onClick={() => handleClick(i)}
-                  className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 flex items-center gap-3 ${i === activeStep ? "glass-card" : "hover:bg-accent/30"}`}
-                  style={i === activeStep ? { borderLeft: `3px solid ${s.accent}` } : {}}
+                  className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 flex items-center gap-3 ${i === activeStep ? "bg-primary/[0.06] border border-primary/15" : "border border-transparent hover:bg-accent/20"}`}
                 >
                   <span className="text-xs font-mono text-muted-foreground w-5">{s.num}</span>
                   <span className={`text-sm ${i === activeStep ? "text-foreground font-medium" : "text-muted-foreground"}`}>{s.title}</span>
