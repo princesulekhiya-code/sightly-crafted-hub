@@ -23,6 +23,7 @@ const Index = () => {
       <TrustedBySection />
       <StatsSection />
       <ScoreSection />
+      <DemoVideoSection />
       <FeaturesSection />
       <EvaluationSection />
       <BeforeAfterResumeSection />
