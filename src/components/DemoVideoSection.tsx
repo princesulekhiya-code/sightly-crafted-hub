@@ -1,9 +1,13 @@
 import { ScrollReveal } from "./ScrollReveal";
+import { ScrollImageReveal } from "./ScrollImageReveal";
+import { AmbientGlow } from "./AmbientGlow";
 import demoShot from "@/assets/demo-video-frame-v3.jpg";
 
 export function DemoVideoSection() {
   return (
     <section className="py-16 px-0 relative overflow-hidden">
+      <AmbientGlow position="top-left" />
+      <AmbientGlow position="bottom-right" />
       <ScrollReveal>
         <div className="max-w-full mx-auto">
           <div className="text-center mb-10 px-6">
@@ -16,16 +20,19 @@ export function DemoVideoSection() {
             </p>
           </div>
 
-          <div className="relative overflow-hidden">
-            <img
-              src={demoShot}
-              alt="JOBRA resume analysis dashboard displayed on a laptop in a dark premium workspace"
-              loading="lazy"
-              width={1920}
-              height={1080}
-              className="w-full object-cover transition-transform duration-700 hover:scale-[1.01]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-background/20 pointer-events-none" />
+          <ScrollImageReveal>
+            <div className="relative overflow-hidden">
+              <img
+                src={demoShot}
+                alt="JOBRA resume analysis dashboard displayed on a laptop in a dark premium workspace"
+                loading="lazy"
+                width={1920}
+                height={1080}
+                className="w-full object-cover transition-transform duration-700 hover:scale-[1.01]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-background/20 pointer-events-none" />
+            </div>
+          </ScrollImageReveal>
 
             <div className="absolute left-6 right-6 bottom-6 flex flex-wrap gap-2 pointer-events-none">
               <span className="rounded-full border border-border/50 bg-background/70 px-3 py-1 text-[11px] text-foreground/80 backdrop-blur-sm">
@@ -38,7 +45,6 @@ export function DemoVideoSection() {
                 AI Suggestions
               </span>
             </div>
-          </div>
         </div>
       </ScrollReveal>
     </section>

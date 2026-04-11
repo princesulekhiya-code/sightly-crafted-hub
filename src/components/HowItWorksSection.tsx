@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { ScrollReveal } from "./ScrollReveal";
 import { ScrollFade } from "./ScrollFade";
+import { AmbientGlow } from "./AmbientGlow";
 
 import stepUpload from "@/assets/step-upload.jpg";
 import stepAtsScore from "@/assets/step-ats-score.jpg";
@@ -44,7 +45,8 @@ export function HowItWorksSection() {
   const step = steps[activeStep];
 
   return (
-    <section className="py-24 px-6">
+    <section className="py-24 px-6 relative overflow-hidden">
+      <AmbientGlow position="top-left" />
       <ScrollReveal>
         <div className="max-w-6xl mx-auto">
           <ScrollFade>

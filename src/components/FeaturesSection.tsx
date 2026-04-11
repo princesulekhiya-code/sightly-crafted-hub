@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ScrollReveal } from "./ScrollReveal";
 import { ScrollFade } from "./ScrollFade";
 import { Magnetic } from "./Magnetic";
+import { AmbientGlow } from "./AmbientGlow";
 
 import featureResumeScan from "@/assets/feature-resume-scan.jpg";
 import featureCareerTrajectory from "@/assets/feature-career-trajectory.jpg";
@@ -24,7 +25,9 @@ export function FeaturesSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <section id="features" className="py-24 px-6">
+    <section id="features" className="py-24 px-6 relative overflow-hidden">
+      <AmbientGlow position="bottom-left" />
+      <AmbientGlow position="top-right" />
       <ScrollReveal>
         <div className="max-w-6xl mx-auto">
           <ScrollFade>

@@ -2,6 +2,7 @@ import { Star } from "lucide-react";
 import { useState } from "react";
 import { ScrollReveal } from "./ScrollReveal";
 import { ScrollFade } from "./ScrollFade";
+import { AmbientGlow } from "./AmbientGlow";
 
 const testimonials = [
   { text: "JOBRA completely changed my job search. The ATS analysis showed exactly what recruiters were looking for. I landed my dream role within 2 weeks.", author: "Sarah Jackson", role: "Product Manager", company: "Google", rating: 5, scoreJump: "58% → 94%" },
@@ -46,7 +47,8 @@ export function TestimonialsSection() {
   const doubledTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section id="testimonials" className="py-24 overflow-hidden">
+    <section id="testimonials" className="py-24 overflow-hidden relative">
+      <AmbientGlow position="bottom-right" />
       <ScrollReveal>
         <ScrollFade>
           <div className="text-center mb-12 px-6">

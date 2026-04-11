@@ -60,8 +60,21 @@
 
 @layer components {
   .section-heading {
-    @apply text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground;
+    @apply text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight;
     font-family: 'Playfair Display', serif;
+    background: linear-gradient(
+      90deg,
+      hsl(var(--foreground)) 0%,
+      hsl(var(--warm-light)) 25%,
+      hsl(var(--foreground)) 50%,
+      hsl(var(--warm)) 75%,
+      hsl(var(--foreground)) 100%
+    );
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmerText 8s ease-in-out infinite;
   }
 
   .section-subheading {
@@ -182,6 +195,17 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes shimmerText {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes ambientFloat {
+  0% { opacity: 0.04; }
+  50% { opacity: 0.07; }
+  100% { opacity: 0.04; }
 }
 
 @keyframes fadeInUp {
