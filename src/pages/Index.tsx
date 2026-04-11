@@ -3,7 +3,6 @@ import { HeroSection } from "@/components/HeroSection";
 import { TrustedBySection } from "@/components/TrustedBySection";
 import { StatsSection } from "@/components/StatsSection";
 import { ScoreSection } from "@/components/ScoreSection";
-import { DemoVideoSection } from "@/components/DemoVideoSection";
 import { FeaturesSection } from "@/components/FeaturesSection";
 import { EvaluationSection } from "@/components/EvaluationSection";
 import { BeforeAfterResumeSection } from "@/components/BeforeAfterResumeSection";
@@ -23,7 +22,6 @@ const Index = () => {
       <TrustedBySection />
       <StatsSection />
       <ScoreSection />
-      <DemoVideoSection />
       <FeaturesSection />
       <EvaluationSection />
       <BeforeAfterResumeSection />
