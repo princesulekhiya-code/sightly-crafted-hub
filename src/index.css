@@ -109,12 +109,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(200,149,108,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(200,149,108,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 70%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 70%);
+  background-image: none;
   pointer-events: none;
   z-index: 0;
 }
