@@ -189,6 +189,11 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes heroReveal {
+  from { opacity: 0; transform: translateY(40px) scale(0.97); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
 @keyframes marquee-scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
