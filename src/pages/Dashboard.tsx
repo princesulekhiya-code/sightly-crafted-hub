@@ -68,7 +68,7 @@ export default function DashboardPage() {
           </div>
           <div className="flex-1 text-center md:text-left">
             <p className="text-sm text-muted-foreground mb-0.5">Hello 👋</p>
-            <h2 className="text-xl font-semibold text-foreground mb-2">Your Resume Analysis</h2>
+            <h2 className="text-xl font-semibold text-foreground mb-2 page-heading">Your Resume Analysis</h2>
             <p className="text-sm text-secondary-foreground mb-4 max-w-xl leading-relaxed">
               The resume presents a highly skilled Full-Stack Developer with 2+ years of experience, aligning strongly with the job description's requirements.
             </p>
