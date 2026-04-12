@@ -23,8 +23,8 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
       {/* Sidebar */}
       <aside className="hidden md:flex flex-col w-56 border-r border-border/50 py-6 px-3">
         <Link to="/" className="px-3 mb-1">
-          <span className="text-lg font-bold warm-text">Jobra AI</span>
-          <p className="text-[10px] text-muted-foreground tracking-widest uppercase">AI Career Platform</p>
+          <span className="text-lg font-bold warm-text" style={{ fontFamily: "'Playfair Display', serif" }}>Jobra AI</span>
+          <p className="text-[10px] text-muted-foreground tracking-widest uppercase" style={{ fontFamily: "'Inter', sans-serif" }}>AI Career Platform</p>
         </Link>
 
         <nav className="flex-1 mt-6 space-y-0.5">
@@ -68,7 +68,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
       <div className="flex-1 flex flex-col overflow-auto">
         {/* Top Bar */}
         <header className="flex items-center justify-between px-6 py-4 border-b border-border/50">
-          <h1 className="text-lg font-semibold text-foreground">Dashboard</h1>
+          <h1 className="text-lg font-semibold text-foreground" style={{ fontFamily: "'Playfair Display', serif" }}>Dashboard</h1>
           <div className="flex items-center gap-4">
             <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary/50 border border-border/50">
               <Search className="w-4 h-4 text-muted-foreground" />
