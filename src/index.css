@@ -81,6 +81,16 @@
     @apply text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed;
   }
 
+  .page-heading {
+    font-family: 'Playfair Display', serif;
+    @apply tracking-tight;
+  }
+
+  .page-label {
+    @apply text-[10px] tracking-[0.25em] uppercase font-medium;
+    color: hsl(var(--primary) / 0.7);
+  }
+
   .glass-card {
     background: rgba(18, 18, 18, 0.9);
     backdrop-filter: blur(20px);
