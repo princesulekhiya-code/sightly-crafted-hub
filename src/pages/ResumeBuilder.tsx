@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { DashboardLayout } from "@/components/DashboardLayout";
 import { Sparkles, ArrowUpRight } from "lucide-react";
 
@@ -143,11 +144,11 @@ export default function ResumeBuilderPage() {
             <div key={t.name} className="group rounded-2xl bg-card border border-border/60 overflow-hidden hover:border-primary/30 transition-all duration-300">
               {/* Use Template Button on top */}
               <div className="p-2">
-                <button className="w-full flex items-center justify-center gap-2 py-2 rounded-xl bg-primary/10 text-primary text-xs font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary/20">
+                <Link to="/resume-editor" className="w-full flex items-center justify-center gap-2 py-2 rounded-xl bg-primary/10 text-primary text-xs font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary/20">
                   <Sparkles className="w-3 h-3" />
                   Use this template
                   <ArrowUpRight className="w-3 h-3" />
-                </button>
+                </Link>
               </div>
 
               {/* Preview */}
