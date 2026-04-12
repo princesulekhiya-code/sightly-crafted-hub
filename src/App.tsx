@@ -16,6 +16,7 @@ const Dashboard = lazy(() => import("./pages/Dashboard.tsx"));
 const Profile = lazy(() => import("./pages/Profile.tsx"));
 const Settings = lazy(() => import("./pages/Settings.tsx"));
 const Mentors = lazy(() => import("./pages/Mentors.tsx"));
+const ResumeEditor = lazy(() => import("./pages/ResumeEditor.tsx"));
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
             <Route path="/login" element={<Login />} />
             <Route path="/resume-analysis" element={<ResumeAnalysis />} />
             <Route path="/resume-builder" element={<ResumeBuilder />} />
+            <Route path="/resume-editor" element={<ResumeEditor />} />
             <Route path="/job-matches" element={<JobMatches />} />
             <Route path="/interview" element={<Interview />} />
             <Route path="/dashboard" element={<Dashboard />} />
