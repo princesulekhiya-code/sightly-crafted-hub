@@ -11,40 +11,57 @@ const JOBS = [
 export default function JobMatchesPage() {
   return (
     <DashboardLayout>
-      <div className="max-w-4xl">
-        <h2 className="text-2xl font-semibold text-foreground mb-1">Smart Job Matches</h2>
-        <p className="text-muted-foreground mb-8">AI-matched jobs based on your resume and skills</p>
+      <div className="max-w-5xl space-y-6">
+        <div>
+          <h2 className="text-xl font-semibold text-foreground mb-1">Smart Job Matches</h2>
+          <p className="text-sm text-secondary-foreground">AI-matched jobs based on your resume and skills</p>
+        </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          {[{ label: "Total Matches", value: "47", icon: Target }, { label: "High Match", value: "12", icon: TrendingUp }, { label: "Saved", value: "8", icon: Bookmark }, { label: "Applied", value: "5", icon: CheckCircle }].map((s, i) => (
-            <div key={i} className="glass-card rounded-xl p-4 text-center">
-              <s.icon className="w-4 h-4 text-primary mx-auto mb-2" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {[
+            { label: "Total Matches", value: "47", icon: Target },
+            { label: "High Match", value: "12", icon: TrendingUp },
+            { label: "Saved", value: "8", icon: Bookmark },
+            { label: "Applied", value: "5", icon: CheckCircle },
+          ].map((s, i) => (
+            <div key={i} className="rounded-2xl bg-card border border-border/60 p-4 text-center hover:border-primary/20 transition-all duration-300">
+              <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-2">
+                <s.icon className="w-4 h-4 text-primary" />
+              </div>
               <p className="text-xl font-bold text-foreground">{s.value}</p>
-              <p className="text-xs text-muted-foreground">{s.label}</p>
+              <p className="text-[11px] text-muted-foreground">{s.label}</p>
             </div>
           ))}
         </div>
 
-        <div className="space-y-4">
+        {/* Search Bar */}
+        <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-card border border-border/60">
+          <Search className="w-4 h-4 text-muted-foreground" />
+          <input type="text" placeholder="Search jobs by title, company, or skills..." className="bg-transparent text-sm text-foreground placeholder:text-muted-foreground outline-none flex-1" />
+        </div>
+
+        <div className="space-y-3">
           {JOBS.map((job, i) => (
-            <div key={i} className="glass-card rounded-2xl p-6">
+            <div key={i} className="rounded-2xl bg-card border border-border/60 p-5 hover:border-primary/20 transition-all duration-300 group">
               <div className="flex items-start justify-between mb-3">
                 <div>
-                  <h3 className="text-foreground font-semibold">{job.title}</h3>
-                  <p className="text-sm text-muted-foreground">{job.company}</p>
+                  <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-300">{job.title}</h3>
+                  <p className="text-xs text-secondary-foreground mt-0.5">{job.company}</p>
                 </div>
                 <div className="text-right">
-                  <span className={`text-2xl font-bold ${job.match >= 90 ? "text-primary" : "text-foreground"}`}>{job.match}%</span>
-                  <p className="text-xs text-muted-foreground">match</p>
+                  <span className={`text-xl font-bold ${job.match >= 90 ? "text-primary" : "text-foreground"}`}>{job.match}%</span>
+                  <p className="text-[10px] text-muted-foreground">match</p>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-4 text-xs text-muted-foreground mb-4">
-                <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{job.location}</span>
-                <span className="flex items-center gap-1"><DollarSign className="w-3 h-3" />{job.salary}</span>
-                <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{job.posted}</span>
+              <div className="flex flex-wrap gap-3 text-[11px] text-secondary-foreground mb-3">
+                <span className="flex items-center gap-1"><MapPin className="w-3 h-3 text-muted-foreground" />{job.location}</span>
+                <span className="flex items-center gap-1"><DollarSign className="w-3 h-3 text-muted-foreground" />{job.salary}</span>
+                <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-muted-foreground" />{job.posted}</span>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {job.skills.map((s, j) => <span key={j} className="px-2.5 py-1 rounded-full bg-accent/50 text-xs text-accent-foreground">{s}</span>)}
+              <div className="flex flex-wrap gap-1.5">
+                {job.skills.map((s, j) => (
+                  <span key={j} className="px-2.5 py-1 rounded-full bg-secondary/30 border border-border/50 text-[10px] text-accent-foreground">{s}</span>
+                ))}
               </div>
             </div>
           ))}

@@ -1,32 +1,14 @@
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import analysisBg from "@/assets/analysis-bg.jpg";
+import { DashboardLayout } from "@/components/DashboardLayout";
 import {
   Upload, FileText, Brain, BarChart3, ShieldCheck, Star,
   Search, Building2, ClipboardList, Sparkles, Target, CheckCircle2, X, AlertCircle
 } from "lucide-react";
 
 const ANALYSIS_TYPES = [
-  {
-    id: "general",
-    icon: ClipboardList,
-    label: "General ATS",
-    desc: "Standard scan for keyword density and formatting errors.",
-  },
-  {
-    id: "role",
-    icon: Building2,
-    label: "With Role",
-    desc: "Analyze compatibility for a specific target job title.",
-  },
-  {
-    id: "jd",
-    icon: Search,
-    label: "With JD",
-    desc: "Deep-dive match against a specific job description.",
-  },
+  { id: "general", icon: ClipboardList, label: "General ATS", desc: "Standard scan for keyword density and formatting errors." },
+  { id: "role", icon: Building2, label: "With Role", desc: "Analyze compatibility for a specific target job title." },
+  { id: "jd", icon: Search, label: "With JD", desc: "Deep-dive match against a specific job description." },
 ];
 
 const FEATURES = [
@@ -45,7 +27,6 @@ const analyzeSteps = [
 ];
 
 export default function ResumeAnalysisPage() {
-  const navigate = useNavigate();
   const [file, setFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -86,50 +67,30 @@ export default function ResumeAnalysisPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background relative">
-      {/* Background image */}
-      <img src={analysisBg} alt="" width={1920} height={1080} className="absolute top-0 left-0 w-full h-[800px] object-cover opacity-50 pointer-events-none" />
-      <div className="absolute top-0 left-0 w-full h-[800px] bg-gradient-to-b from-background/20 via-background/50 to-background pointer-events-none" />
-
-      <Header />
-
-      <main className="relative z-10 pt-24 pb-20 px-6">
-        {/* Hero heading */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <span className="text-xs tracking-widest uppercase text-primary">✦ AI-Powered Analysis</span>
-          <h1
-            className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground mt-4 leading-[1.1]"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
-            Optimize Your Resume for Success.
-          </h1>
-          <p className="text-base md:text-lg text-muted-foreground mt-4 max-w-xl mx-auto leading-relaxed">
+    <DashboardLayout>
+      <div className="max-w-3xl mx-auto space-y-8">
+        {/* Header */}
+        <div className="text-center">
+          <span className="text-[10px] tracking-widest uppercase text-primary font-medium">✦ AI-Powered Analysis</span>
+          <h2 className="text-xl md:text-2xl font-semibold text-foreground mt-2">Optimize Your Resume for Success</h2>
+          <p className="text-sm text-secondary-foreground mt-2 max-w-lg mx-auto">
             Upload your resume and let our AI analyze your compatibility with modern ATS systems and specific job roles.
           </p>
         </div>
 
-        {/* Main content - depends on state */}
         {!analyzing && score === null ? (
-          <div className="max-w-2xl mx-auto space-y-10">
+          <div className="space-y-6">
             {/* Step 1: Upload */}
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-7 h-7 rounded-full bg-primary/20 text-primary text-xs font-bold flex items-center justify-center border border-primary/30">1</span>
+              <div className="flex items-center gap-3 mb-3">
+                <span className="w-6 h-6 rounded-full bg-primary/15 text-primary text-[10px] font-bold flex items-center justify-center">1</span>
                 <span className="text-sm font-semibold text-foreground">Upload Resume</span>
               </div>
 
-              <input
-                ref={inputRef}
-                type="file"
-                accept=".pdf,.doc,.docx"
-                className="hidden"
-                onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])}
-              />
+              <input ref={inputRef} type="file" accept=".pdf,.doc,.docx" className="hidden" onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])} />
 
               <div
-                className={`border-2 border-dashed rounded-2xl p-10 text-center cursor-pointer transition-all ${
-                  isDragging ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"
-                }`}
+                className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all duration-300 ${isDragging ? "border-primary bg-primary/5" : "border-border/60 hover:border-primary/30"}`}
                 onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
                 onDragLeave={() => setIsDragging(false)}
                 onDrop={(e) => { e.preventDefault(); setIsDragging(false); e.dataTransfer.files[0] && handleFile(e.dataTransfer.files[0]); }}
@@ -137,32 +98,32 @@ export default function ResumeAnalysisPage() {
               >
                 {file ? (
                   <div className="flex items-center justify-center gap-3">
-                    <FileText className="w-5 h-5 text-primary" />
+                    <FileText className="w-4 h-4 text-primary" />
                     <span className="text-sm text-foreground truncate">{file.name}</span>
                     <button onClick={(e) => { e.stopPropagation(); reset(); }}>
-                      <X className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />
+                      <X className="w-3.5 h-3.5 text-muted-foreground hover:text-foreground transition-colors" />
                     </button>
                   </div>
                 ) : (
                   <>
-                    <Upload className="w-10 h-10 text-muted-foreground mx-auto mb-3" />
+                    <Upload className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
                     <p className="text-sm text-foreground font-medium">Click to upload or drag and drop</p>
-                    <p className="text-xs text-primary/60 mt-1">PDF, DOC, DOCX (max 5MB)</p>
+                    <p className="text-[11px] text-muted-foreground mt-1">PDF, DOC, DOCX (max 5MB)</p>
                   </>
                 )}
               </div>
 
               {error && (
-                <p className="text-xs text-destructive mt-2 flex items-center gap-1">
+                <p className="text-[11px] text-destructive/70 mt-2 flex items-center gap-1">
                   <AlertCircle className="w-3 h-3" /> {error}
                 </p>
               )}
             </div>
 
-            {/* Step 2: Choose Analysis Type */}
+            {/* Step 2: Analysis Type */}
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-7 h-7 rounded-full bg-primary/20 text-primary text-xs font-bold flex items-center justify-center border border-primary/30">2</span>
+              <div className="flex items-center gap-3 mb-3">
+                <span className="w-6 h-6 rounded-full bg-primary/15 text-primary text-[10px] font-bold flex items-center justify-center">2</span>
                 <span className="text-sm font-semibold text-foreground">Choose Analysis Type</span>
               </div>
 
@@ -171,22 +132,13 @@ export default function ResumeAnalysisPage() {
                   const Icon = type.icon;
                   const selected = analysisType === type.id;
                   return (
-                    <button
-                      key={type.id}
-                      onClick={() => setAnalysisType(type.id)}
-                      className={`glass-card rounded-xl p-4 text-left transition-all ${
-                        selected
-                          ? "border-primary/50 bg-primary/5"
-                          : "hover:border-primary/20"
-                      }`}
-                    >
-                      <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-3 ${
-                        selected ? "bg-primary/20" : "bg-secondary"
-                      }`}>
-                        <Icon className={`w-4 h-4 ${selected ? "text-primary" : "text-muted-foreground"}`} />
+                    <button key={type.id} onClick={() => setAnalysisType(type.id)}
+                      className={`rounded-xl p-4 text-left transition-all duration-300 border ${selected ? "border-primary/40 bg-primary/5" : "border-border/60 bg-card hover:border-primary/20"}`}>
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-3 ${selected ? "bg-primary/15" : "bg-secondary/50"}`}>
+                        <Icon className={`w-3.5 h-3.5 ${selected ? "text-primary" : "text-muted-foreground"}`} />
                       </div>
-                      <p className="text-sm font-semibold text-foreground">{type.label}</p>
-                      <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{type.desc}</p>
+                      <p className="text-xs font-semibold text-foreground">{type.label}</p>
+                      <p className="text-[10px] text-muted-foreground mt-1 leading-relaxed">{type.desc}</p>
                     </button>
                   );
                 })}
@@ -194,39 +146,30 @@ export default function ResumeAnalysisPage() {
             </div>
 
             {/* CTA */}
-            <div className="text-center space-y-3">
-              <button
-                onClick={startAnalysis}
-                disabled={!file}
-                className={`px-8 py-3 rounded-full text-sm font-semibold transition-all ${
-                  file
-                    ? "bg-primary text-primary-foreground hover:opacity-90"
-                    : "bg-secondary text-muted-foreground cursor-not-allowed"
-                }`}
-              >
+            <div className="text-center space-y-2">
+              <button onClick={startAnalysis} disabled={!file}
+                className={`px-6 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${file ? "bg-primary/90 text-primary-foreground hover:bg-primary" : "bg-secondary text-muted-foreground cursor-not-allowed"}`}>
                 Start Analysis →
               </button>
-              <p className="text-xs text-muted-foreground flex items-center justify-center gap-1.5">
-                <AlertCircle className="w-3 h-3" />
-                Login required to save progress and access historical scans.
+              <p className="text-[10px] text-muted-foreground flex items-center justify-center gap-1">
+                <AlertCircle className="w-3 h-3" /> Login required to save progress and access historical scans.
               </p>
             </div>
           </div>
         ) : analyzing ? (
-          /* Analyzing state */
-          <div className="max-w-lg mx-auto glass-card rounded-2xl p-8">
-            <p className="text-foreground font-medium mb-6">Analyzing: {file?.name}</p>
+          <div className="rounded-2xl bg-card border border-border/60 p-6">
+            <p className="text-sm text-foreground font-medium mb-5">Analyzing: {file?.name}</p>
             <div className="space-y-4">
               {analyzeSteps.map((step, i) => {
                 const Icon = step.icon;
                 return (
-                  <div key={i} className="flex items-center gap-4 animate-fade-up" style={{ animationDelay: `${i * 0.6}s` }}>
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-primary" />
+                  <div key={i} className="flex items-center gap-3 animate-fade-up" style={{ animationDelay: `${i * 0.6}s` }}>
+                    <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Icon className="w-4 h-4 text-primary" />
                     </div>
                     <div>
                       <p className="text-sm font-medium text-foreground">{step.label}</p>
-                      <p className="text-xs text-muted-foreground">{step.sub}</p>
+                      <p className="text-[11px] text-muted-foreground">{step.sub}</p>
                     </div>
                   </div>
                 );
@@ -234,66 +177,60 @@ export default function ResumeAnalysisPage() {
             </div>
           </div>
         ) : score !== null ? (
-          /* Results */
-          <div className="max-w-2xl mx-auto space-y-6">
-            <div className="glass-card rounded-2xl p-8 text-center">
-              <p className="text-sm text-muted-foreground mb-2">Your ATS Score</p>
-              <p className={`text-6xl font-bold ${score >= 80 ? "text-primary" : score >= 60 ? "text-foreground" : "text-destructive"}`}>
-                {score}%
-              </p>
-              <p className="text-sm text-muted-foreground mt-2">
+          <div className="space-y-5">
+            <div className="rounded-2xl bg-gradient-to-br from-[hsl(var(--primary)/0.08)] via-[hsl(var(--card))] to-[hsl(var(--primary)/0.04)] border border-border/60 p-6 text-center">
+              <p className="text-xs text-muted-foreground mb-2">Your ATS Score</p>
+              <p className={`text-5xl font-bold ${score >= 80 ? "text-primary" : score >= 60 ? "text-foreground" : "text-destructive/70"}`}>{score}%</p>
+              <p className="text-xs text-secondary-foreground mt-2">
                 {score >= 80 ? "Excellent! Your resume is ATS-ready." : score >= 60 ? "Good, but there's room for improvement." : "Needs work. Follow our suggestions."}
               </p>
             </div>
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-2 gap-3">
               {[
                 { label: "Format", val: Math.min(score + 5, 100) },
                 { label: "Keywords", val: Math.max(score - 8, 40) },
                 { label: "Experience", val: Math.min(score + 2, 100) },
                 { label: "Skills", val: Math.max(score - 3, 50) },
               ].map((s, i) => (
-                <div key={i} className="glass-card rounded-xl p-4">
-                  <div className="flex justify-between text-sm mb-2">
-                    <span className="text-muted-foreground">{s.label}</span>
+                <div key={i} className="rounded-xl bg-card border border-border/60 p-4">
+                  <div className="flex justify-between text-xs mb-2">
+                    <span className="text-secondary-foreground">{s.label}</span>
                     <span className="text-foreground font-medium">{s.val}%</span>
                   </div>
-                  <div className="w-full h-1.5 bg-secondary rounded-full overflow-hidden">
-                    <div className="h-full bg-primary rounded-full transition-all" style={{ width: `${s.val}%` }} />
+                  <div className="w-full h-1 bg-secondary rounded-full overflow-hidden">
+                    <div className="h-full bg-primary/70 rounded-full transition-all duration-700" style={{ width: `${s.val}%` }} />
                   </div>
                 </div>
               ))}
             </div>
             <div className="text-center">
-              <button onClick={reset} className="px-6 py-3 rounded-full bg-secondary text-foreground font-semibold hover:bg-accent transition-all">
+              <button onClick={reset} className="px-5 py-2.5 rounded-xl bg-secondary/50 border border-border/50 text-foreground text-sm font-medium hover:border-primary/30 transition-all duration-300">
                 Analyze Another Resume
               </button>
             </div>
           </div>
         ) : null}
 
-        {/* Bottom features - show only on initial state */}
+        {/* Features */}
         {!analyzing && score === null && (
-          <div className="max-w-4xl mx-auto mt-20">
-            <div className="divider-gradient mb-12" />
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="border-t border-border/40 pt-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {FEATURES.map((feat, i) => {
                 const Icon = feat.icon;
                 return (
                   <div key={i} className="text-center">
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3">
-                      <Icon className="w-5 h-5 text-primary" />
+                    <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-2">
+                      <Icon className="w-4 h-4 text-primary" />
                     </div>
-                    <p className="text-sm font-semibold text-primary">{feat.label}</p>
-                    <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{feat.desc}</p>
+                    <p className="text-xs font-semibold text-accent-foreground">{feat.label}</p>
+                    <p className="text-[10px] text-muted-foreground mt-1 leading-relaxed">{feat.desc}</p>
                   </div>
                 );
               })}
             </div>
           </div>
         )}
-      </main>
-
-      <Footer />
-    </div>
+      </div>
+    </DashboardLayout>
   );
 }
